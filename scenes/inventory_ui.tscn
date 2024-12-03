@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bodwxjgs862km"]
+[gd_scene load_steps=4 format=3 uid="uid://bodwxjgs862km"]
 
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_xptp7"]
-[ext_resource type="FontFile" uid="uid://bq2phat0leerj" path="res://assets/carmen.ttf" id="2_nub7b"]
+[ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="2_i52yc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rxr6i"]
-
-[sub_resource type="Theme" id="Theme_ng02p"]
-default_font = ExtResource("2_nub7b")
-default_font_size = 0
 
 [node name="inventoryUI" type="CanvasLayer"]
 script = ExtResource("1_xptp7")
@@ -57,7 +53,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_ng02p")
+theme = ExtResource("2_i52yc")
 theme_override_colors/font_color = Color(0.202848, 0.286985, 0.2689, 1)
 theme_override_font_sizes/font_size = 72
 text = "Инвентарь"

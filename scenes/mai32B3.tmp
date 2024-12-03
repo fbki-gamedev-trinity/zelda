@@ -22,7 +22,7 @@ tile_set = ExtResource("1_57ra1")
 
 [node name="pickUpItem" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(191, 221)
-stacks = 25
+stacks = 8
 
 [node name="pickUpItem6" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(-50, 9)
@@ -30,16 +30,16 @@ inventry_item = ExtResource("4_2j83i")
 
 [node name="pickUpItem2" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(184, 222)
-stacks = 25
+stacks = 8
 
 [node name="pickUpItem3" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(176, 223)
-stacks = 25
+stacks = 8
 
 [node name="pickUpItem4" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(180, 216)
-stacks = 25
+stacks = 8
 
 [node name="pickUpItem5" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(186, 214)
-stacks = 25
+stacks = 8

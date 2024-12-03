@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cl5rj2xau62p4"]
+[gd_scene load_steps=29 format=3 uid="uid://cl5rj2xau62p4"]
 
 [ext_resource type="Texture2D" uid="uid://sid7delveptd" path="res://assets/character.png" id="1_ly18o"]
 [ext_resource type="Shape2D" uid="uid://bggahwarfv2gl" path="res://resources/player_collision.tres" id="3_rcfhj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dxf7biuhgyqdk" path="res://scenes/on_screen_ui.tscn" id="4_qbw16"]
 [ext_resource type="PackedScene" uid="uid://bodwxjgs862km" path="res://scenes/inventory_ui.tscn" id="4_yporj"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="5_wg15f"]
-[ext_resource type="Script" path="res://scripts/combat_system.gd" id="7_y2q4d"]
 
 [sub_resource type="GDScript" id="GDScript_81vwy"]
 script/source = "extends CharacterBody2D
@@ -42,10 +41,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.queue_free()
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_akuvg"]
-atlas = ExtResource("1_ly18o")
-region = Rect2(96, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwc1s"]
 atlas = ExtResource("1_ly18o")
 region = Rect2(0, 64, 16, 32)
@@ -65,10 +60,6 @@ region = Rect2(32, 64, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7a7nq"]
 atlas = ExtResource("1_ly18o")
 region = Rect2(48, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rry8n"]
-atlas = ExtResource("1_ly18o")
-region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43t4v"]
 atlas = ExtResource("1_ly18o")
@@ -90,10 +81,6 @@ region = Rect2(32, 0, 16, 32)
 atlas = ExtResource("1_ly18o")
 region = Rect2(48, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8xqx"]
-atlas = ExtResource("1_ly18o")
-region = Rect2(96, 224, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnosw"]
 atlas = ExtResource("1_ly18o")
 region = Rect2(0, 96, 16, 32)
@@ -113,10 +100,6 @@ region = Rect2(32, 96, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck838"]
 atlas = ExtResource("1_ly18o")
 region = Rect2(48, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7acmc"]
-atlas = ExtResource("1_ly18o")
-region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypjo0"]
 atlas = ExtResource("1_ly18o")
@@ -142,14 +125,6 @@ region = Rect2(48, 32, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_akuvg")
-}],
-"loop": false,
-"name": &"back_attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_uwc1s")
 }],
 "loop": true,
@@ -171,14 +146,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rry8n")
-}],
-"loop": false,
-"name": &"front_attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -208,14 +175,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i8xqx")
-}],
-"loop": false,
-"name": &"left_attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fnosw")
 }],
 "loop": true,
@@ -237,14 +196,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"left_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7acmc")
-}],
-"loop": false,
-"name": &"right_attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -279,7 +230,7 @@ script = SubResource("GDScript_81vwy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4r6ov")
-animation = &"right_attack"
+animation = &"front_walk"
 autoplay = "front_idle"
 script = ExtResource("3_w34ad")
 
@@ -302,25 +253,6 @@ visible = false
 
 [node name="inventory" type="Node" parent="."]
 script = ExtResource("5_wg15f")
+items = null
 
-[node name="CombatSystem" type="Node2D" parent="."]
-script = ExtResource("7_y2q4d")
-
-[node name="RightHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
-
-[node name="Area2D" type="Area2D" parent="CombatSystem/RightHandWeaponSprite"]
-collision_layer = 16
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
-
-[node name="LeftHandWeaponSprite2" type="Sprite2D" parent="CombatSystem"]
-
-[node name="Area2D" type="Area2D" parent="CombatSystem/LeftHandWeaponSprite2"]
-collision_layer = 16
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite2/Area2D"]
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

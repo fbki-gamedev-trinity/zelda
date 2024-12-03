@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://co12sblt3cvkp"]
+
+[ext_resource type="Shape2D" uid="uid://cvt7vmrnn5f52" path="res://resources/sword_weapon_collision.tres" id="1_6cmsu"]
+[ext_resource type="Texture2D" uid="uid://drwc6u800rsvy" path="res://assets/sword-hand.png" id="2_c35ba"]
+[ext_resource type="Script" path="res://scripts/weapon_item.gd" id="3_5w3x2"]
+
+[resource]
+script = ExtResource("3_5w3x2")
+in_hand_texture = ExtResource("2_c35ba")
+collision_shape = ExtResource("1_6cmsu")
+attack_type = "Melee"
+left_attachment_position = Vector2(-9, 4)
+right_attachment_position = Vector2(6, 4)
+front_attachment_position = Vector2(-7, 11)
+back_attachment_position = Vector2(-5, -5)
+left_rotation = 90
+right_rotation = -90
+front_rotation = 0
+back_rotation = -180
+left_z_index = 1
+right_z_index = 1
+front_z_index = 1
+back_z_index = 0

@@ -3,7 +3,12 @@ extends Node
 class_name Inventory
 
 @onready var inventory_ui: InventoryUI = $"../inventoryUI"
+@onready var on_screen_ui: OnScreenUI = $"../onScreenUI"
+@onready var combat_system: CombatSystem = $"../CombatSystem"
 @export var items: Array[InventoryItem] = []
+
+func _ready() -> void:
+	inventory_ui.equip_item.connect(on_item_equipped)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
@@ -14,7 +19,7 @@ func add_item(item: InventoryItem, stacks: int):
 		add_stackable_item_to_inventory(item, stacks)
 	else:
 		items.append(item)
-		#обновить ui
+		inventory_ui.add_item(item)
 		
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 	var item_index = -1
@@ -28,16 +33,23 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		if inventory_item.stacks + stacks <= item.max_stacks:
 			inventory_item.stacks += stacks
 			items[item_index] = inventory_item
-			#обновить ui
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
 		else:
 			var stacks_diff = inventory_item.stacks + stacks - item.max_stacks
 			var additional_inventory_item = inventory_item.duplicate(true)
 			inventory_item.stacks = item.max_stacks
-			#обновить ui
+			inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, item_index)
 			additional_inventory_item.stacks = stacks_diff
 			items.append(additional_inventory_item)
-			#обновить ui
+			inventory_ui.add_item(additional_inventory_item)
 	else:
 		item.stacks = stacks
 		items.append(item)
-		#обновить ui
+		inventory_ui.add_item(item)
+	
+func on_item_equipped(idx: int, slot_to_equip: String):
+	var item_to_equip = items[idx]
+	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
+	combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)
+	
+	

@@ -8,7 +8,7 @@
 script = ExtResource("1_w650l")
 slot_type = "NotEquipable"
 ground_collision_shape = ExtResource("1_6v1q7")
-name = ""
+name = "Золото"
 texture = ExtResource("2_y34f5")
 max_stacks = 100
 price = 1
