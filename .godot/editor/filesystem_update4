@@ -1,0 +1,17 @@
+res://scenes/main.tscn
+res://layers.tres
+res://scenes/pickup_item.tscn
+res://resources/sword_weapon_collision.tres
+res://resources/shield_inventory_item.tres
+res://resources/shield_weapon_item.tres
+res://scripts/combat_system.gd
+res://scenes/player.tscn
+res://scripts/player.gd
+res://scripts/inventory_slot.gd
+res://scripts/inventory_ui.gd
+res://scripts/inventory.gd
+res://scripts/pickup_item.gd
+res://scripts/animation_controller.gd
+res://scripts/weapon_item.gd
+res://resources/sword_weapon_item.tres
+res://scenes/enemy.tscn

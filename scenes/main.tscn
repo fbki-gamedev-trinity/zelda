@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://dqn10ipvsaxtg"]
+[gd_scene load_steps=6 format=4 uid="uid://dqn10ipvsaxtg"]
 
 [ext_resource type="TileSet" uid="uid://c812qkm8bhei5" path="res://layers.tres" id="1_57ra1"]
 [ext_resource type="PackedScene" uid="uid://cl5rj2xau62p4" path="res://scenes/player.tscn" id="2_e7th4"]
 [ext_resource type="PackedScene" uid="uid://cvlkth7ahcaxo" path="res://scenes/pickup_item.tscn" id="3_v8iom"]
 [ext_resource type="Resource" uid="uid://mq02wr60xp4t" path="res://resources/sword_inventory_item.tres" id="4_2j83i"]
+[ext_resource type="Resource" uid="uid://bgf2k6i72nfqd" path="res://resources/shield_inventory_item.tres" id="5_jcecq"]
 
 [node name="main" type="Node"]
 
@@ -27,6 +28,10 @@ stacks = 25
 [node name="pickUpItem6" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(-50, 9)
 inventry_item = ExtResource("4_2j83i")
+
+[node name="pickUpItemShiled" parent="." instance=ExtResource("3_v8iom")]
+position = Vector2(59, 70)
+inventry_item = ExtResource("5_jcecq")
 
 [node name="pickUpItem2" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(184, 222)
