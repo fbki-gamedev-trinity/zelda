@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bjgvhcwyy1f2d"]
+[gd_scene load_steps=40 format=3 uid="uid://bjgvhcwyy1f2d"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_pmn0s"]
 [ext_resource type="Texture2D" uid="uid://b368a8c2rk0fp" path="res://assets/32x32-bat-sprite.png" id="2_60pay"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xqs68buj3a32" path="res://health_bar.tscn" id="6_i8bg0"]
 [ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="8_80g2n"]
 [ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="9_id5sq"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="10_57w5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqdwx"]
 atlas = ExtResource("2_60pay")
@@ -174,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ihlj2")
 }],
-"loop": true,
+"loop": false,
 "name": &"died",
 "speed": 15.0
 }, {
@@ -255,8 +256,8 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("patrol_path")]
-collision_layer = 0
-collision_mask = 38
+collision_layer = 32
+collision_mask = 22
 script = ExtResource("1_pmn0s")
 patrol_path = [null, null, null, null]
 
@@ -283,3 +284,6 @@ max_health = 100
 [node name="ProgressBar" parent="." instance=ExtResource("6_i8bg0")]
 theme_override_styles/background = ExtResource("8_80g2n")
 theme_override_styles/fill = ExtResource("9_id5sq")
+script = ExtResource("10_57w5v")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

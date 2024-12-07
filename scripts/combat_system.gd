@@ -69,3 +69,10 @@ func on_attack_animation_finished():
 	can_attack = true
 	right_hand_weapon_sprite.hide()
 	left_hand_weapon_sprite.hide()
+	left_hand_collision_shape_2d.disabled = true
+	right_hand_collision_shape_2d.disabled = true
+
+
+func _on_area_2d_body_entered(body: Node2D, hand_type) -> void:
+	if body.has_node("HealthSystem") and hand_type == "right":
+		(body.find_child("HealthSystem") as HealthSystem).apply_damage(right_weapon.damage)

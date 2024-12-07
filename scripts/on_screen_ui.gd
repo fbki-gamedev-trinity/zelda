@@ -23,3 +23,4 @@ func init_health_bar(max_health: int) -> void:
 	
 func apply_damage_to_health_bar(damage: int):
 	progress_bar.value -= damage
+	#print(progress_bar.value)

@@ -7,7 +7,7 @@ class_name Inventory
 @onready var combat_system: CombatSystem = $"../CombatSystem"
 @onready var animated_sprite_2d: AnimationController = $"../AnimatedSprite2D"
 
-const PICKUP_ITEM_SCENE = preload("res://Scenes/pickup_item.tscn")
+const PICKUP_ITEM_SCENE = preload("res://scenes/pickup_item.tscn")
 
 @export var items: Array[InventoryItem] = [] # вещи которые уже в инвентаре
 

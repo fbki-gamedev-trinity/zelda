@@ -1,5 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://cl5rj2xau62p4"]
 
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_668uq"]
 [ext_resource type="Texture2D" uid="uid://sid7delveptd" path="res://assets/character.png" id="1_ly18o"]
 [ext_resource type="Shape2D" uid="uid://bggahwarfv2gl" path="res://resources/player_collision.tres" id="3_rcfhj"]
 [ext_resource type="Script" path="res://scripts/animation_controller.gd" id="3_w34ad"]
@@ -8,70 +9,6 @@
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="5_wg15f"]
 [ext_resource type="Script" path="res://scripts/combat_system.gd" id="7_y2q4d"]
 [ext_resource type="Script" path="res://scripts/health_system.gd" id="8_nox5s"]
-
-[sub_resource type="GDScript" id="GDScript_81vwy"]
-script/source = "extends CharacterBody2D
-
-class_name Player
-
-@onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D
-@onready var inventory: Inventory = $inventory
-@onready var health_system: HealthSystem = $HealthSystem
-@onready var on_screen_ui: OnScreenUI = $onScreenUI
-@onready var combat_system: CombatSystem = $CombatSystem
-
-@export var health = 100
-
-func _ready() -> void:
-	health_system.init(health)
-	health_system.died.connect(on_player_dead)
-	health_system.damage_taken.connect(on_damage_taken)
-	on_screen_ui.init_health_bar(health)
-
-const SPEED = 3000.0
-
-
-func _physics_process(delta: float) -> void:
-	
-	if animated_sprite_2d.animation.contains(\"attack\"):
-		return
-	
-	var direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
-	
-	if direction:
-		velocity = direction * SPEED * delta
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
-		velocity.y = move_toward(velocity.y, 0, SPEED * delta)
-		
-	if velocity != Vector2.ZERO:
-		animated_sprite_2d.play_movement_animation(velocity)
-	else:
-		animated_sprite_2d.play_idle_animation()	
-	
-	move_and_slide()
-		
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is PickUpItem:
-		inventory.add_item(area.inventry_item, area.stacks)
-		area.queue_free()
-		
-	if area.get_parent() is Enemy:
-		var damage_to_player = (area.get_parent() as Enemy).damage_to_player
-		health_system.apply_damage(damage_to_player)	
-		
-		
-func on_damage_taken(damage: int) -> void:
-	on_screen_ui.apply_damage_to_health_bar(damage)
-	
-	
-func on_player_dead():
-	set_physics_process(false)
-	combat_system.set_process_input(false)
-	animated_sprite_2d.play(\"dead\")
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akuvg"]
 atlas = ExtResource("1_ly18o")
@@ -318,7 +255,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
-script = SubResource("GDScript_81vwy")
+script = ExtResource("1_668uq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4r6ov")
@@ -356,6 +293,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
+disabled = true
 
 [node name="LeftHandWeaponSprite2" type="Sprite2D" parent="CombatSystem"]
 
@@ -364,9 +302,12 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite2/Area2D"]
+disabled = true
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("8_nox5s")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="CombatSystem/RightHandWeaponSprite/Area2D" to="CombatSystem" method="_on_area_2d_body_entered" binds= ["right"]]
+[connection signal="body_entered" from="CombatSystem/LeftHandWeaponSprite2/Area2D" to="CombatSystem" method="_on_area_2d_body_entered" binds= ["left"]]
