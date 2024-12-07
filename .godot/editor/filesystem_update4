@@ -5,3 +5,5 @@ res://scenes/main.tscn
 res://scripts/enemy.gd
 res://scenes/player.tscn
 res://scenes/health_system.tscn
+res://scenes/on_screen_ui.tscn
+res://scripts/on_screen_ui.gd

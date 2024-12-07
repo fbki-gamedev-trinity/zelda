@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cl5rj2xau62p4"]
+[gd_scene load_steps=36 format=3 uid="uid://cl5rj2xau62p4"]
 
 [ext_resource type="Texture2D" uid="uid://sid7delveptd" path="res://assets/character.png" id="1_ly18o"]
 [ext_resource type="Shape2D" uid="uid://bggahwarfv2gl" path="res://resources/player_collision.tres" id="3_rcfhj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bodwxjgs862km" path="res://scenes/inventory_ui.tscn" id="4_yporj"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="5_wg15f"]
 [ext_resource type="Script" path="res://scripts/combat_system.gd" id="7_y2q4d"]
+[ext_resource type="Script" path="res://scripts/health_system.gd" id="8_nox5s"]
 
 [sub_resource type="GDScript" id="GDScript_81vwy"]
 script/source = "extends CharacterBody2D
@@ -15,6 +16,18 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D
 @onready var inventory: Inventory = $inventory
+@onready var health_system: HealthSystem = $HealthSystem
+@onready var on_screen_ui: OnScreenUI = $onScreenUI
+@onready var combat_system: CombatSystem = $CombatSystem
+
+@export var health = 100
+
+func _ready() -> void:
+	health_system.init(health)
+	health_system.died.connect(on_player_dead)
+	health_system.damage_taken.connect(on_damage_taken)
+	on_screen_ui.init_health_bar(health)
+
 const SPEED = 3000.0
 
 
@@ -44,6 +57,20 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is PickUpItem:
 		inventory.add_item(area.inventry_item, area.stacks)
 		area.queue_free()
+		
+	if area.get_parent() is Enemy:
+		var damage_to_player = (area.get_parent() as Enemy).damage_to_player
+		health_system.apply_damage(damage_to_player)	
+		
+		
+func on_damage_taken(damage: int) -> void:
+	on_screen_ui.apply_damage_to_health_bar(damage)
+	
+	
+func on_player_dead():
+	set_physics_process(false)
+	combat_system.set_process_input(false)
+	animated_sprite_2d.play(\"dead\")
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akuvg"]
@@ -69,6 +96,10 @@ region = Rect2(32, 64, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7a7nq"]
 atlas = ExtResource("1_ly18o")
 region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1exr"]
+atlas = ExtResource("1_ly18o")
+region = Rect2(216, 0, 18, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rry8n"]
 atlas = ExtResource("1_ly18o")
@@ -179,6 +210,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a1exr")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rry8n")
 }],
 "loop": false,
@@ -283,9 +322,8 @@ script = SubResource("GDScript_81vwy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4r6ov")
-animation = &"right_attack"
+animation = &"dead"
 autoplay = "front_idle"
-frame_progress = 1.0
 script = ExtResource("3_w34ad")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -295,7 +333,7 @@ shape = ExtResource("3_rcfhj")
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 8
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = ExtResource("3_rcfhj")
@@ -326,6 +364,9 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite2/Area2D"]
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("8_nox5s")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

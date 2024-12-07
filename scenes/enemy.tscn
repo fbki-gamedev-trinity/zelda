@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bjgvhcwyy1f2d"]
+[gd_scene load_steps=39 format=3 uid="uid://bjgvhcwyy1f2d"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_pmn0s"]
 [ext_resource type="Texture2D" uid="uid://b368a8c2rk0fp" path="res://assets/32x32-bat-sprite.png" id="2_60pay"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shape2D" uid="uid://dxcxi7njk0yid" path="res://resources/enemies/bat_collision_shape.tres" id="4_55ums"]
 [ext_resource type="Script" path="res://scripts/health_system.gd" id="4_47355"]
 [ext_resource type="PackedScene" uid="uid://xqs68buj3a32" path="res://health_bar.tscn" id="6_i8bg0"]
+[ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="8_80g2n"]
+[ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="9_id5sq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqdwx"]
 atlas = ExtResource("2_60pay")
@@ -253,13 +255,14 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("patrol_path")]
+collision_layer = 0
+collision_mask = 38
 script = ExtResource("1_pmn0s")
 patrol_path = [null, null, null, null]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d0wrt")
-animation = &"front_walk"
-frame_progress = 0.837921
+animation = &"back_walk"
 script = ExtResource("3_ivwew")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -267,6 +270,7 @@ position = Vector2(0.5, -2)
 shape = ExtResource("4_55ums")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, -2)
@@ -277,3 +281,5 @@ script = ExtResource("4_47355")
 max_health = 100
 
 [node name="ProgressBar" parent="." instance=ExtResource("6_i8bg0")]
+theme_override_styles/background = ExtResource("8_80g2n")
+theme_override_styles/fill = ExtResource("9_id5sq")
