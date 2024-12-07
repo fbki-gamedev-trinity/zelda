@@ -259,7 +259,7 @@ script = ExtResource("1_668uq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4r6ov")
-animation = &"dead"
+animation = &"front_attack"
 autoplay = "front_idle"
 script = ExtResource("3_w34ad")
 
@@ -267,6 +267,7 @@ script = ExtResource("3_w34ad")
 shape = ExtResource("3_rcfhj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]

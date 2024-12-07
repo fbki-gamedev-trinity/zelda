@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_qc42t")
+damage = 15
 in_hand_texture = ExtResource("1_ia13x")
 side_in_hand_texture = ExtResource("3_u2eve")
 attack_type = "Melee"

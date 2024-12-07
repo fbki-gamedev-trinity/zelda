@@ -18,7 +18,7 @@ class_name Enemy
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @export var loot_stacks = 1
 
-const PICKUP_ITEM_SCENE = preload("res://Scenes/pickup_item.tscn") # для моентки с врага
+const PICKUP_ITEM_SCENE = preload("res://scenes/pickup_item.tscn") # для моентки с врага
 
 var current_patrol_target = 0
 var wait_timer = 0.0
@@ -69,7 +69,7 @@ func on_died():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "died":
 		var loot_drop = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
-		loot_drop.inventory_item = item_to_drop
+		loot_drop.inventry_item = item_to_drop
 		loot_drop.stacks = loot_stacks
 		
 		get_tree().root.add_child(loot_drop)

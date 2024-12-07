@@ -55,13 +55,13 @@ func perform_action(weapon: WeaponItem, sprite: Sprite2D, collision_shape: Colli
 func set_active_weapon(weapon: WeaponItem, slot_to_equip: String):
 	if slot_to_equip == "Left_Hand":
 		if weapon.collision_shape != null:
-			left_hand_collision_shape_2d.shape == weapon.collision_shape
+			left_hand_collision_shape_2d.shape = weapon.collision_shape
 		left_hand_weapon_sprite.texture = weapon.in_hand_texture
 		left_weapon = weapon
 		
 	elif slot_to_equip == "Right_Hand":
 		if weapon.collision_shape != null:
-			right_hand_collision_shape_2d.shape == weapon.collision_shape
+			right_hand_collision_shape_2d.shape = weapon.collision_shape
 		right_hand_weapon_sprite.texture = weapon.in_hand_texture
 		right_weapon = weapon
 
