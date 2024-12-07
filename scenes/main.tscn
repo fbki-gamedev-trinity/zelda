@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://dqn10ipvsaxtg"]
+[gd_scene load_steps=8 format=4 uid="uid://dqn10ipvsaxtg"]
 
 [ext_resource type="TileSet" uid="uid://c812qkm8bhei5" path="res://layers.tres" id="1_57ra1"]
 [ext_resource type="PackedScene" uid="uid://cl5rj2xau62p4" path="res://scenes/player.tscn" id="2_e7th4"]
 [ext_resource type="PackedScene" uid="uid://cvlkth7ahcaxo" path="res://scenes/pickup_item.tscn" id="3_v8iom"]
 [ext_resource type="Resource" uid="uid://mq02wr60xp4t" path="res://resources/sword_inventory_item.tres" id="4_2j83i"]
 [ext_resource type="Resource" uid="uid://bgf2k6i72nfqd" path="res://resources/shield_inventory_item.tres" id="5_jcecq"]
+[ext_resource type="PackedScene" uid="uid://bjgvhcwyy1f2d" path="res://scenes/enemy.tscn" id="6_kkiyh"]
+[ext_resource type="Resource" uid="uid://c6edpnmtxdtim" path="res://resources/gold_coin.tres" id="7_iyeid"]
 
 [node name="main" type="Node"]
 
@@ -48,3 +50,23 @@ stacks = 25
 [node name="pickUpItem5" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(186, 214)
 stacks = 25
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_kkiyh")]
+position = Vector2(173, 121)
+patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
+patrol_wait_time = 0.1
+item_to_drop = ExtResource("7_iyeid")
+
+[node name="EnemyPatrolPath" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="EnemyPatrolPath"]
+position = Vector2(173, 121)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemyPatrolPath"]
+position = Vector2(219, 120)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemyPatrolPath"]
+position = Vector2(219, 159)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemyPatrolPath"]
+position = Vector2(173, 159)
