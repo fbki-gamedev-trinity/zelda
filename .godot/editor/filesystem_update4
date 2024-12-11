@@ -1,12 +1,9 @@
 res://scenes/house_scene.tscn
 res://layers.tres
 res://resources/shield_weapon_item.tres
-res://scenes/main.tscn
 res://scenes/player.tscn
-res://scenes/on_screen_ui.tscn
-res://scenes/pickup_item.tscn
-res://scenes/transition_manager.tscn
-res://scripts/transition_change_manager.gd
+res://scripts/follow_cam.gd
 res://scripts/house_scene.gd
-res://scripts/main.gd
 res://scripts/player.gd
+res://scenes/main.tscn
+res://scripts/camera_2d.gd
