@@ -1,10 +1,13 @@
-HealthSystem
 Marker2D
-Node2D
-ProgressBar
-Node
 CollisionShape2D
 Area2D
+TileMapLayer
+Node
+ColorRect
+CanvasLayer
+HealthSystem
+Node2D
+ProgressBar
 AnimatedSprite2D
 CharacterBody2D
 PickUpItem
