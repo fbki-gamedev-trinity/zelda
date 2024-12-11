@@ -1,19 +1,17 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://nwnmycupweek"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://nwnmycupweek"]
 
-[ext_resource type="Texture2D" uid="uid://dxl1lu7i0ij50" path="res://assets/Shield.png" id="1_ia13x"]
+[ext_resource type="Texture2D" uid="uid://duqtxnyhsf0kj" path="res://assets/axe.png" id="1_tye3k"]
 [ext_resource type="Script" path="res://scripts/weapon_item.gd" id="2_qc42t"]
-[ext_resource type="Texture2D" uid="uid://f7edsyjuc155" path="res://assets/shield_side.png" id="3_u2eve"]
 
 [resource]
 script = ExtResource("2_qc42t")
 damage = 15
-in_hand_texture = ExtResource("1_ia13x")
-side_in_hand_texture = ExtResource("3_u2eve")
+in_hand_texture = ExtResource("1_tye3k")
 attack_type = "Melee"
 left_attachment_position = Vector2(-13, 2)
 right_attachment_position = Vector2(13, 2)
 front_attachment_position = Vector2(0, 10)
-back_attachment_position = Vector2(0, -10)
+back_attachment_position = Vector2(0, 10)
 left_rotation = 180
 right_rotation = 0
 front_rotation = 0

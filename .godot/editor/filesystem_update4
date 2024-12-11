@@ -1,9 +1,7 @@
-res://scenes/house_scene.tscn
+res://scenes/main.tscn
 res://layers.tres
 res://resources/shield_weapon_item.tres
+res://resources/shield_inventory_item.tres
 res://scenes/player.tscn
-res://scripts/follow_cam.gd
-res://scripts/house_scene.gd
-res://scripts/player.gd
-res://scenes/main.tscn
-res://scripts/camera_2d.gd
+res://scenes/house_scene.tscn
+res://scripts/weapon_item.gd

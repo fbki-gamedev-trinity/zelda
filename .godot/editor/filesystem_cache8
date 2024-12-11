@@ -1,10 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1733934391
+::res://::1733943536
 health_bar.tscn::PackedScene::1648523448957745539::1733517554::0::1::::<><>::
 icon.svg::CompressedTexture2D::7174541056061731855::1733327866::1733499406::1::::<><>::
-layers.tres::TileSet::7144415505826137638::1733924090::0::1::::<><>::uid://do7tl1tgtnetg::::res://assets/Overworld.png<>uid://b88ty654ajykx::::res://assets/objects.png<>uid://b0708y6f71t5j::::res://assets/Tileset_Interior Wood_Gnomenlied.png
-::res://assets/::1733590282
+layers.tres::TileSet::7144415505826137638::1733934413::0::1::::<><>::uid://do7tl1tgtnetg::::res://assets/Overworld.png<>uid://b88ty654ajykx::::res://assets/objects.png<>uid://b0708y6f71t5j::::res://assets/Tileset_Interior Wood_Gnomenlied.png
+::res://assets/::1733943470
 32x32-bat-sprite.png::CompressedTexture2D::4417709414305214045::1733512733::1733513069::1::::<><>::
+axe.png::CompressedTexture2D::8597264384248468329::1733943438::1733943536::1::::<><>::
 carmen.ttf::FontFile::3566103667212096011::1733327866::1733499406::1::::<><>::
 cave.png::CompressedTexture2D::9037375605895809995::1733327866::1733499406::1::::<><>::
 character.png::CompressedTexture2D::1280153668177613205::1733327866::1733499406::1::::<><>::
@@ -23,7 +24,7 @@ shield_side.png::CompressedTexture2D::417253514604219122::1722275652::1733501470
 sword-hand.png::CompressedTexture2D::8398066599727285794::1733327866::1733499406::1::::<><>::
 sword.png::CompressedTexture2D::4845238407225631410::1733327866::1733499406::1::::<><>::
 Tileset_Interior Wood_Gnomenlied.png::CompressedTexture2D::4208780027512171777::1733590049::1733590282::1::::<><>::
-::res://resources/::1733920001
+::res://resources/::1733934413
 gold_coin.tres::Resource/InventoryItem::6957162671303671760::1733327866::0::1::::<><>::uid://c8tlv36ubtvdy::::res://resources/gold_coin_collision.tres<>res://scripts/inventory_item.gd<>uid://bgfusy8b735jc::::res://assets/coin.png
 gold_coin_collision.tres::CircleShape2D::7129003292814397370::1733327866::0::1::::<><>::
 health_bar_background.tres::StyleBoxFlat::8853006753086062245::1733550932::0::1::::<><>::
@@ -32,7 +33,7 @@ inventory_ui.tres::Theme::1435532008279826899::1733327866::0::1::::<><>::uid://b
 player_collision.tres::CapsuleShape2D::2819953668896632155::1733327866::0::1::::<><>::
 shield_ground_collision_shape.tres::RectangleShape2D::7733039478401804855::1733501626::0::1::::<><>::
 shield_inventory_item.tres::Resource/InventoryItem::2819534493108159439::1733503504::0::1::::<><>::uid://dif7bbe1bhkd8::::res://resources/shield_ground_collision_shape.tres<>res://scripts/inventory_item.gd<>uid://dxl1lu7i0ij50::::res://assets/Shield.png<>uid://nwnmycupweek::::res://resources/shield_weapon_item.tres
-shield_weapon_item.tres::Resource/WeaponItem::958683292896194114::1733920001::0::1::::<><>::uid://dxl1lu7i0ij50::::res://assets/Shield.png<>res://scripts/weapon_item.gd<>uid://f7edsyjuc155::::res://assets/shield_side.png
+shield_weapon_item.tres::Resource/WeaponItem::958683292896194114::1733934413::0::1::::<><>::uid://dxl1lu7i0ij50::::res://assets/Shield.png<>res://scripts/weapon_item.gd<>uid://f7edsyjuc155::::res://assets/shield_side.png
 sword-hand.png::CompressedTexture2D::7275282046390949288::1733327866::1733499406::1::::<><>::
 sword_ground_collision.tres::RectangleShape2D::3544200658992727452::1733327866::0::1::::<><>::
 sword_inventory_item.tres::Resource/InventoryItem::876863492194145937::1733559767::0::1::::<><>::uid://bqq3p45rt1oca::::res://resources/sword_ground_collision.tres<>res://scripts/inventory_item.gd<>uid://cbbcmsgfn7h6i::::res://assets/sword.png<>uid://co12sblt3cvkp::::res://resources/sword_weapon_item.tres
@@ -40,27 +41,28 @@ sword_weapon_collision.tres::RectangleShape2D::6288011363703643211::1733500685::
 sword_weapon_item.tres::Resource/WeaponItem::5810830573436184743::1733559767::0::1::::<><>::uid://cvt7vmrnn5f52::::res://resources/sword_weapon_collision.tres<>uid://drwc6u800rsvy::::res://assets/sword-hand.png<>res://scripts/weapon_item.gd
 ::res://resources/enemies/::1733516770
 bat_collision_shape.tres::RectangleShape2D::8779146688699990203::1733516170::0::1::::<><>::
-::res://scenes/::1733933812
+::res://scenes/::1733936839
 enemy.tscn::PackedScene::3031794240521129469::1733589910::0::1::::<><>::res://scripts/enemy.gd<>uid://b368a8c2rk0fp::::res://assets/32x32-bat-sprite.png<>res://scripts/enemy_animated_sprite_2d.gd<>uid://b88ty654ajykx::::res://assets/objects.png<>uid://dxcxi7njk0yid::::res://resources/enemies/bat_collision_shape.tres<>res://scripts/health_system.gd<>uid://xqs68buj3a32::::res://health_bar.tscn<>uid://dyepy0k1or3h6::::res://resources/health_bar_background.tres<>uid://cla7nw11jtilb::::res://resources/health_bar_fill.tres<>res://scripts/health_bar.gd
 health_system.tscn::PackedScene::3265490262985417331::1733589910::0::1::::<><>::res://scripts/health_system.gd
-house_scene.tscn::PackedScene::9045383410664554307::1733933619::0::1::::<><>::uid://c812qkm8bhei5::::res://layers.tres<>res://scripts/house_scene.gd
+house_scene.tscn::PackedScene::9045383410664554307::1733936839::0::1::::<><>::uid://c812qkm8bhei5::::res://layers.tres<>res://scripts/house_scene.gd
 inventory_slot.tscn::PackedScene::168656078699698859::1733327866::0::1::::<><>::res://scripts/inventory_slot.gd<>uid://dbyo1kjv8ltxt::::res://assets/faceset.png<>uid://upnac3aa235p::::res://resources/inventory_ui.tres
 inventory_ui.tscn::PackedScene::3376634957830573076::1733327866::0::1::::<><>::res://scripts/inventory_ui.gd<>uid://upnac3aa235p::::res://resources/inventory_ui.tres
-main.tscn::PackedScene::8310744191087241448::1733933812::0::1::::<><>::uid://c812qkm8bhei5::::res://layers.tres<>res://scripts/main.gd<>uid://cl5rj2xau62p4::::res://scenes/player.tscn<>uid://cvlkth7ahcaxo::::res://scenes/pickup_item.tscn<>uid://mq02wr60xp4t::::res://resources/sword_inventory_item.tres<>uid://bgf2k6i72nfqd::::res://resources/shield_inventory_item.tres<>uid://bjgvhcwyy1f2d::::res://scenes/enemy.tscn<>uid://c6edpnmtxdtim::::res://resources/gold_coin.tres<>res://scripts/house_entrance.gd
+main.tscn::PackedScene::8310744191087241448::1733936730::0::1::::<><>::uid://c812qkm8bhei5::::res://layers.tres<>res://scripts/main.gd<>uid://cl5rj2xau62p4::::res://scenes/player.tscn<>uid://cvlkth7ahcaxo::::res://scenes/pickup_item.tscn<>uid://mq02wr60xp4t::::res://resources/sword_inventory_item.tres<>res://scripts/camera_2d.gd<>uid://bgf2k6i72nfqd::::res://resources/shield_inventory_item.tres<>uid://bjgvhcwyy1f2d::::res://scenes/enemy.tscn<>uid://c6edpnmtxdtim::::res://resources/gold_coin.tres<>res://scripts/house_entrance.gd
 on_screen_equipment_slot.tscn::PackedScene::592845312125728228::1733327866::0::1::::<><>::res://scripts/on_screen_equipment_slot.gd<>uid://dbyo1kjv8ltxt::::res://assets/faceset.png<>uid://upnac3aa235p::::res://resources/inventory_ui.tres
 on_screen_ui.tscn::PackedScene::8785872524496695984::1733927337::0::1::::<><>::uid://ipgctqlem4k3::::res://scenes/on_screen_equipment_slot.tscn<>res://scripts/on_screen_ui.gd<>uid://dyepy0k1or3h6::::res://resources/health_bar_background.tres<>uid://cla7nw11jtilb::::res://resources/health_bar_fill.tres
 pickup_item.tscn::PackedScene::6270156756198023452::1733927337::0::1::::<><>::res://scripts/pickup_item.gd<>uid://c6edpnmtxdtim::::res://resources/gold_coin.tres<>uid://dxl1lu7i0ij50::::res://assets/Shield.png<>uid://dif7bbe1bhkd8::::res://resources/shield_ground_collision_shape.tres
-player.tscn::PackedScene::5607899694737457919::1733933619::0::1::::<><>::res://scripts/player.gd<>uid://sid7delveptd::::res://assets/character.png<>uid://bggahwarfv2gl::::res://resources/player_collision.tres<>res://scripts/animation_controller.gd<>uid://dxf7biuhgyqdk::::res://scenes/on_screen_ui.tscn<>uid://bodwxjgs862km::::res://scenes/inventory_ui.tscn<>res://scripts/inventory.gd<>res://scripts/combat_system.gd<>res://scripts/health_system.gd
+player.tscn::PackedScene::5607899694737457919::1733936731::0::1::::<><>::res://scripts/player.gd<>uid://sid7delveptd::::res://assets/character.png<>uid://bggahwarfv2gl::::res://resources/player_collision.tres<>res://scripts/animation_controller.gd<>uid://dxf7biuhgyqdk::::res://scenes/on_screen_ui.tscn<>uid://bodwxjgs862km::::res://scenes/inventory_ui.tscn<>res://scripts/inventory.gd<>res://scripts/combat_system.gd<>res://scripts/health_system.gd
 transition_manager.tscn::PackedScene::6275874806086515024::1733927337::0::1::::<><>::res://scripts/transition_change_manager.gd
-::res://scripts/::1733931794
+::res://scripts/::1733936766
 animation_controller.gd::GDScript::-1::1733509758::0::1::::AnimationController<>AnimatedSprite2D<>::
+camera_2d.gd::GDScript::-1::1733936515::0::1::::<>Camera2D<>::
 combat_system.gd::GDScript::-1::1733585876::0::1::::CombatSystem<>Node<>::
 enemy.gd::GDScript::-1::1733585876::0::1::::Enemy<>CharacterBody2D<>::
 enemy_animated_sprite_2d.gd::GDScript::-1::1733517645::0::1::::EnemyAnimatedSprite2D<>AnimatedSprite2D<>::
 health_bar.gd::GDScript::-1::1733557669::0::1::::EnemyHealthBar<>ProgressBar<>::
 health_system.gd::GDScript::-1::1733558010::0::1::::HealthSystem<>Node<>::
 house_entrance.gd::GDScript::-1::1733589116::0::1::::<>Area2D<>::
-house_scene.gd::GDScript::-1::1733925655::0::1::::<>Node<>::
+house_scene.gd::GDScript::-1::1733936766::0::1::::<>Node<>::
 inventory.gd::GDScript::-1::1733557429::0::1::::Inventory<>Node<>::
 inventory_item.gd::GDScript::-1::1733327866::0::1::::InventoryItem<>Resource<>::
 inventory_slot.gd::GDScript::-1::1733507483::0::1::::InventorySlot<>VBoxContainer<>::
@@ -69,6 +71,6 @@ main.gd::GDScript::-1::1733925302::0::1::::<>Node<>::
 on_screen_equipment_slot.gd::GDScript::-1::1733327866::0::1::::OnScreenEquipmentSlot<>VBoxContainer<>::
 on_screen_ui.gd::GDScript::-1::1733557803::0::1::::OnScreenUI<>CanvasLayer<>::
 pickup_item.gd::GDScript::-1::1733509112::0::1::::PickUpItem<>Area2D<>::
-player.gd::GDScript::-1::1733931794::0::1::::Player<>CharacterBody2D<>::
+player.gd::GDScript::-1::1733934817::0::1::::Player<>CharacterBody2D<>::
 transition_change_manager.gd::GDScript::-1::1733924383::0::1::::TransitionManager<>CanvasLayer<>::
 weapon_item.gd::GDScript::-1::1733553409::0::1::::WeaponItem<>Resource<>::
