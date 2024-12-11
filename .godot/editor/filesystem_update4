@@ -9,3 +9,4 @@ res://scenes/transition_manager.tscn
 res://scripts/transition_change_manager.gd
 res://scripts/house_scene.gd
 res://scripts/main.gd
+res://scripts/player.gd

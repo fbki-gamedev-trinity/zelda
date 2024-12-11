@@ -269,6 +269,10 @@ shape = ExtResource("3_rcfhj")
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 zoom = Vector2(3, 3)
+limit_left = -250
+limit_top = -160
+limit_right = 375
+limit_bottom = 285
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 40

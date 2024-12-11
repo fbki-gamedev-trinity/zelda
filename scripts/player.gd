@@ -51,6 +51,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		health_system.apply_damage(damage_to_player)
 		
 		
+		
 func on_damage_taken(damage: int) -> void:
 	on_screen_ui.apply_damage_to_health_bar(damage)
 	
