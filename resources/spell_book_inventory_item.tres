@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://nw0c3gaqlurs"]
+
+[ext_resource type="Shape2D" uid="uid://d3ey5xwex177h" path="res://resources/spell_book_ground_collision.tres" id="1_gyykk"]
+[ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_o0q8s"]
+[ext_resource type="Texture2D" uid="uid://t5ipywjd8he4" path="res://assets/book.png" id="2_5cs0o"]
+[ext_resource type="Resource" uid="uid://cihmiatpmmf1h" path="res://resources/spell_book_weapon_item.tres" id="3_e2wsu"]
+
+[resource]
+script = ExtResource("1_o0q8s")
+slot_type = "Left_Hand"
+ground_collision_shape = ExtResource("1_gyykk")
+name = "Книга заклинаний"
+texture = ExtResource("2_5cs0o")
+max_stacks = 0
+price = 150
+weapon_item = ExtResource("3_e2wsu")

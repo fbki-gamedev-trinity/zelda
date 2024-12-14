@@ -1,0 +1,92 @@
+[gd_scene load_steps=15 format=3 uid="uid://btgc4fwremsfe"]
+
+[ext_resource type="Script" path="res://scripts/destroyed_object.gd" id="1_f4f0w"]
+[ext_resource type="Texture2D" uid="uid://capeedt033y00" path="res://assets/barrel.png" id="2_g8svh"]
+[ext_resource type="Texture2D" uid="uid://cdih4bg50ef2f" path="res://assets/barrel_died.png" id="3_675is"]
+[ext_resource type="Shape2D" uid="uid://kyfpy8ud7fxa" path="res://resources/destroyed_object_collision.tres" id="4_lg7bj"]
+[ext_resource type="PackedScene" uid="uid://bmr3fas2mqv1l" path="res://scenes/health_system.tscn" id="4_lil23"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_sa6by"]
+[ext_resource type="Texture2D" uid="uid://b88ty654ajykx" path="res://assets/objects.png" id="5_t56tp"]
+[ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="6_ns5xr"]
+[ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="7_dgajp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_811fp"]
+atlas = ExtResource("5_t56tp")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_512f6"]
+atlas = ExtResource("5_t56tp")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6n1n"]
+atlas = ExtResource("5_t56tp")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx6qp"]
+atlas = ExtResource("5_t56tp")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lp8q7"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("3_675is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_811fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_512f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6n1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx6qp")
+}],
+"loop": false,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g8svh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 38
+script = ExtResource("1_f4f0w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lp8q7")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("4_lg7bj")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("4_lg7bj")
+
+[node name="HealthSystem" parent="." instance=ExtResource("4_lil23")]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 8.0
+offset_bottom = -9.0
+theme_override_styles/background = ExtResource("6_ns5xr")
+theme_override_styles/fill = ExtResource("7_dgajp")
+step = 1.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("5_sa6by")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

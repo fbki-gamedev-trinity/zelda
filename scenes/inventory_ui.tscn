@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://bodwxjgs862km"]
+
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_xptp7"]
+[ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="2_i52yc"]
+[ext_resource type="PackedScene" uid="uid://cnx0gtj4n7tn" path="res://scenes/inventory_slot.tscn" id="3_nbqyr"]
+[ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/Icons/tile000.png" id="4_ptwkd"]
+[ext_resource type="Texture2D" uid="uid://dp4klrj47dt2t" path="res://assets/Icons/tile002.png" id="5_dfioe"]
+[ext_resource type="Texture2D" uid="uid://cwfrtyoav1rqh" path="res://assets/Icons/tile001.png" id="6_41u6k"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rxr6i"]
+
+[node name="inventoryUI" type="CanvasLayer"]
+script = ExtResource("1_xptp7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.737255)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+modulate = Color(0.780374, 0.690856, 0.586647, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_rxr6i")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_i52yc")
+theme_override_colors/font_color = Color(0.202848, 0.286985, 0.2689, 1)
+theme_override_font_sizes/font_size = 72
+text = "Инвентарь"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="SpellsUI" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SpellsLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI"]
+layout_mode = 2
+theme = ExtResource("2_i52yc")
+theme_override_colors/font_color = Color(0.203922, 0.286275, 0.270588, 1)
+theme_override_font_sizes/font_size = 72
+text = "Заклинания"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FireSpellSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("4_ptwkd")
+start_label = "fire"
+
+[node name="WaterSpellSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("5_dfioe")
+start_label = "water"
+
+[node name="RocksSpellSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("6_41u6k")
+start_label = "rocks"

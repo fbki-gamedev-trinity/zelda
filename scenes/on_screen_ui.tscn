@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxf7biuhgyqdk"]
+
+[ext_resource type="PackedScene" uid="uid://ipgctqlem4k3" path="res://scenes/on_screen_equipment_slot.tscn" id="1_8kll3"]
+[ext_resource type="Script" path="res://scripts/on_screen_ui.gd" id="1_ny8jv"]
+[ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="2_su2xi"]
+[ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="3_r66aa"]
+
+[node name="onScreenUI" type="CanvasLayer"]
+script = ExtResource("1_ny8jv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = ExtResource("2_su2xi")
+theme_override_styles/fill = ExtResource("3_r66aa")
+value = 100.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="RightHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Правая рука"
+
+[node name="LeftHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Левая рука"
+
+[node name="PotionSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+slot_name = "Зелье"
+
+[node name="SpellSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+slot_name = "Заклинание"

@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://upnac3aa235p"]
+
+[ext_resource type="FontFile" uid="uid://bq2phat0leerj" path="res://assets/carmen.ttf" id="1_jx0dw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjvbh"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.872409, 0.00398311, 0.978499, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[resource]
+default_font = ExtResource("1_jx0dw")
+default_font_size = 0
+selected/base_type = &"Button"
+selected/styles/normal = SubResource("StyleBoxFlat_pjvbh")

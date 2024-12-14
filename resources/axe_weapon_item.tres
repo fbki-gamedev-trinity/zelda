@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://nwnmycupweek"]
+
+[ext_resource type="Texture2D" uid="uid://duqtxnyhsf0kj" path="res://assets/axe.png" id="1_tye3k"]
+[ext_resource type="Script" path="res://scripts/weapon_item.gd" id="2_qc42t"]
+
+[resource]
+script = ExtResource("2_qc42t")
+damage = 15
+in_hand_texture = ExtResource("1_tye3k")
+attack_type = "Melee"
+left_attachment_position = Vector2(-9, 4)
+right_attachment_position = Vector2(6, 4)
+front_attachment_position = Vector2(-7, 11)
+back_attachment_position = Vector2(4, -5)
+left_rotation = 90
+right_rotation = -90
+front_rotation = 0
+back_rotation = 180
+left_z_index = 1
+right_z_index = 1
+front_z_index = 1
+back_z_index = 0
