@@ -29,3 +29,6 @@ func toggle_spell_slot(is_visible: bool, ui_texture: Texture):
 	spell_slot.visible = is_visible
 	if is_visible:
 		spell_slot.set_equipment_texture(ui_texture)
+
+func spell_cooldown_activated(cooldown: float):
+	spell_slot.on_cooldown(cooldown)
