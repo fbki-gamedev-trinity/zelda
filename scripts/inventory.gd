@@ -19,7 +19,8 @@ var selected_spell_index = -1
 func _ready() -> void:
 	inventory_ui.equip_item.connect(on_item_equipped)
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
-
+	inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
+	
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_ui.toggle()
@@ -68,10 +69,12 @@ func on_item_equipped(idx: int, slot_to_equip: String):
 	var item_to_equip = items[idx]
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
 	combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)
+	check_magic_ui_visibility()
 	
 func on_item_dropped(idx: int):
 	clear_inventory_slot(idx)
 	eject_item_into_the_ground(idx)
+	check_magic_ui_visibility()
 	
 func clear_inventory_slot(idx: int):
 	taken_inventory_slots_count -= 1
@@ -130,3 +133,4 @@ func check_magic_ui_visibility():
 	inventory_ui.toggle_spells_ui(should_show_magic_ui)
 	if should_show_magic_ui == false:
 		on_screen_ui.toggle_spell_slot(false, null)
+	

@@ -45,12 +45,10 @@ slot_name = "Левая рука"
 
 [node name="PotionSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 slot_name = "Зелье"
 
 [node name="SpellSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_8kll3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 slot_name = "Заклинание"

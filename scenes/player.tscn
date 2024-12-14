@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cl5rj2xau62p4"]
+[gd_scene load_steps=36 format=3 uid="uid://cl5rj2xau62p4"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_668uq"]
 [ext_resource type="Texture2D" uid="uid://sid7delveptd" path="res://assets/character.png" id="1_ly18o"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="5_wg15f"]
 [ext_resource type="Script" path="res://scripts/combat_system.gd" id="7_y2q4d"]
 [ext_resource type="Script" path="res://scripts/health_system.gd" id="8_nox5s"]
-[ext_resource type="Script" path="res://scripts/spell_system.gd" id="10_o67n5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akuvg"]
 atlas = ExtResource("1_ly18o")
@@ -305,9 +304,6 @@ disabled = true
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("8_nox5s")
-
-[node name="SpellSystem" type="Node" parent="."]
-script = ExtResource("10_o67n5")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
