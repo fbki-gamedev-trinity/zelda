@@ -7,7 +7,6 @@ class_name Player
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var on_screen_ui: OnScreenUI = $onScreenUI
 @onready var combat_system: CombatSystem = $CombatSystem
-
 @onready var camera: Camera2D = $Camera2D
 
 @export var health = 100
@@ -40,7 +39,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play_movement_animation(velocity)
 	else:
 		animated_sprite_2d.play_idle_animation()
-
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = velocity.bounce(collision.get_position())
 	move_and_slide()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

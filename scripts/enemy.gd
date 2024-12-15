@@ -13,10 +13,10 @@ class_name Enemy
 @onready var animated_sprite_2d: EnemyAnimatedSprite2D = $AnimatedSprite2D
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var progress_bar: ProgressBar = $ProgressBar
-
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @export var loot_stacks = 1
+@onready var player = $"../Player"
 
 const PICKUP_ITEM_SCENE = preload("res://scenes/pickup_item.tscn") # для моентки с врага
 
@@ -27,16 +27,16 @@ func _ready() -> void:
 	health_system.init(health)
 	progress_bar.max_value = health
 	progress_bar.value = health
-	
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
-	
 	health_system.died.connect(on_died)
 
 func _physics_process(delta: float) -> void:
 	if patrol_path.size() > 1:
 		move_along_path(delta)
-
+	
+		
+	
 func apply_damage(damage: int):
 	health_system.apply_damage(damage)
 
@@ -56,12 +56,14 @@ func move_along_path(delta: float):
 		if wait_timer >= patrol_wait_time:
 			wait_timer = 0.0
 			current_patrol_target = (current_patrol_target + 1) % patrol_path.size()
-	
+
+
 
 func on_died():
 	set_physics_process(false)
 	collision_shape_2d.set_deferred("disabled", true) 
 	area_collision_shape_2d.set_deferred("disabled", true) 
+	
 	animated_sprite_2d.play("died")
 	
 
