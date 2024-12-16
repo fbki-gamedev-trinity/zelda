@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb48f6dgq6wsn"
-path="res://.godot/imported/007.png-6e07eb3f25dfc77e58ff328341de5527.ctex"
+uid="uid://dp4klrj47dt2t"
+path="res://.godot/imported/water_icon.png-ebec05227d9c621659228dd10a4fdd27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fire_Ball/007.png"
-dest_files=["res://.godot/imported/007.png-6e07eb3f25dfc77e58ff328341de5527.ctex"]
+source_file="res://assets/water_icon.png"
+dest_files=["res://.godot/imported/water_icon.png-ebec05227d9c621659228dd10a4fdd27.ctex"]
 
 [params]
 

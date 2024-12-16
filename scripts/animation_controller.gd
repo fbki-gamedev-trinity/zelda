@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 class_name AnimationController
 
 signal attack_animation_finished
+signal dead_animation_finished
 
 const MOVEMENT_TO_IDLE = {
 	"back_walk": "back_idle",
@@ -18,7 +19,14 @@ const DIRECTION_TO_ATTACK_ANIMATION = {
 	"right": "right_attack"
 }
 
-const DIRECTION_TO_ATTACK_VECTOR = {
+const DIRECTION_TO_DEAD_ANIMATION = {
+	"back": "back_dead",
+	"front": "front_dead",
+	"left": "left_dead",
+	"right": "right_dead"
+}
+
+const DIRECTION_VECTOR = {
 	"back": Vector2(0, -1),
 	"front": Vector2(0, 1),
 	"left": Vector2(-1, 0),
@@ -29,8 +37,9 @@ var attack_direction = null
 var item_eject_direction = Vector2.DOWN
 var attack_vector:
 	get:
-		return DIRECTION_TO_ATTACK_VECTOR[attack_direction]
-		
+		return DIRECTION_VECTOR[attack_direction]
+
+				
 func play_movement_animation(velocity: Vector2):
 	if velocity.x > 0:
 		item_eject_direction = Vector2.RIGHT
@@ -63,3 +72,7 @@ func _on_animation_finished() -> void:
 		play(direction + "_idle")
 		attack_direction = null
 		attack_animation_finished.emit()
+
+func play_dead_animation():
+	var direction = animation.split("_")[0]
+	play(DIRECTION_TO_DEAD_ANIMATION[direction])

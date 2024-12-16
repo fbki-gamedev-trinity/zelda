@@ -8,15 +8,17 @@ class_name Player
 @onready var on_screen_ui: OnScreenUI = $onScreenUI
 @onready var combat_system: CombatSystem = $CombatSystem
 @onready var camera: Camera2D = $Camera2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 @export var health = 100
+var is_dead = false
 
 func _ready() -> void:
 	health_system.init(health)
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_damage_taken)
 	on_screen_ui.init_health_bar(health)
-
 const SPEED = 3000.0
 
 func _physics_process(delta: float) -> void:
@@ -59,4 +61,7 @@ func on_damage_taken(damage: int) -> void:
 func on_player_dead():
 	set_physics_process(false)
 	combat_system.set_process_input(false)
-	animated_sprite_2d.play("dead")
+	collision_shape_2d.set_deferred("disabled", true) 
+	area_collision_shape_2d.set_deferred("disabled", true) 
+	animated_sprite_2d.play_dead_animation()
+	

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_xptp7"]
 [ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="2_i52yc"]
 [ext_resource type="PackedScene" uid="uid://cnx0gtj4n7tn" path="res://scenes/inventory_slot.tscn" id="3_nbqyr"]
-[ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/Icons/tile000.png" id="4_ptwkd"]
-[ext_resource type="Texture2D" uid="uid://dp4klrj47dt2t" path="res://assets/Icons/tile002.png" id="5_dfioe"]
-[ext_resource type="Texture2D" uid="uid://cwfrtyoav1rqh" path="res://assets/Icons/tile001.png" id="6_41u6k"]
+[ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/fire_icon.png" id="4_ptwkd"]
+[ext_resource type="Texture2D" uid="uid://dp4klrj47dt2t" path="res://assets/water_icon.png" id="5_dfioe"]
+[ext_resource type="Texture2D" uid="uid://cwfrtyoav1rqh" path="res://assets/rocks_icon.png" id="6_41u6k"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rxr6i"]
 
@@ -95,18 +95,18 @@ unique_name_in_owner = true
 layout_mode = 2
 single_button_press = true
 starting_texture = ExtResource("4_ptwkd")
-start_label = "fire"
+start_label = " Огонь"
 
 [node name="WaterSpellSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
 unique_name_in_owner = true
 layout_mode = 2
 single_button_press = true
 starting_texture = ExtResource("5_dfioe")
-start_label = "water"
+start_label = "Вода"
 
 [node name="RocksSpellSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
 unique_name_in_owner = true
 layout_mode = 2
 single_button_press = true
 starting_texture = ExtResource("6_41u6k")
-start_label = "rocks"
+start_label = "Земля"
