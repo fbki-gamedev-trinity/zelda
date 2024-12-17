@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bodwxjgs862km"]
+[gd_scene load_steps=9 format=3 uid="uid://bodwxjgs862km"]
 
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_xptp7"]
 [ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="2_i52yc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/fire_icon.png" id="4_ptwkd"]
 [ext_resource type="Texture2D" uid="uid://dp4klrj47dt2t" path="res://assets/water_icon.png" id="5_dfioe"]
 [ext_resource type="Texture2D" uid="uid://cwfrtyoav1rqh" path="res://assets/rocks_icon.png" id="6_41u6k"]
+[ext_resource type="Texture2D" uid="uid://cns52xw2kkth3" path="res://assets/air_icon.png" id="7_uklgr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rxr6i"]
 
@@ -75,6 +76,7 @@ columns = 3
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme = ExtResource("2_i52yc")
 
 [node name="SpellsLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/SpellsUI"]
 layout_mode = 2
@@ -110,3 +112,44 @@ layout_mode = 2
 single_button_press = true
 starting_texture = ExtResource("6_41u6k")
 start_label = "Земля"
+
+[node name="ArrowsUI" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_i52yc")
+
+[node name="SpellsLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/ArrowsUI"]
+layout_mode = 2
+theme = ExtResource("2_i52yc")
+theme_override_colors/font_color = Color(0.203922, 0.286275, 0.270588, 1)
+theme_override_font_sizes/font_size = 72
+text = "Стрелы"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/ArrowsUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FireArrowSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/ArrowsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("4_ptwkd")
+start_label = " Огонь"
+
+[node name="WaterArrowSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/ArrowsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("5_dfioe")
+start_label = "Вода"
+
+[node name="AirArrowSlot" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/ArrowsUI/HBoxContainer" instance=ExtResource("3_nbqyr")]
+unique_name_in_owner = true
+layout_mode = 2
+single_button_press = true
+starting_texture = ExtResource("7_uklgr")
+start_label = "Воздух"

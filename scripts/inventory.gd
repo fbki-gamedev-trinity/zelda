@@ -3,6 +3,7 @@ extends Node
 class_name Inventory
 
 signal spell_activated(spell_index: int)
+signal arrow_activated(spell_index: int)
 
 @onready var inventory_ui: InventoryUI = $"../inventoryUI"
 @onready var on_screen_ui: OnScreenUI = $"../onScreenUI"
@@ -14,12 +15,13 @@ const PICKUP_ITEM_SCENE = preload("res://scenes/pickup_item.tscn")
 @export var items: Array[InventoryItem] = [] # вещи которые уже в инвентаре
 
 var taken_inventory_slots_count = 0
-var selected_spell_index = -1 
+var selected_index = -1 
 
 func _ready() -> void:
 	inventory_ui.equip_item.connect(on_item_equipped)
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
+	inventory_ui.arrow_slot_clicked.connect(on_arrow_slot_clicked)
 	
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
@@ -121,16 +123,28 @@ func eject_item_into_the_ground(idx: int):
 	items[idx] = null
 
 func on_spell_slot_clicked(idx: int):
-	selected_spell_index = idx
-	inventory_ui.set_selected_spell_slot(selected_spell_index)
-	spell_activated.emit(selected_spell_index)
+	selected_index = idx
+	inventory_ui.set_selected_spell_slot(selected_index)
+	spell_activated.emit(selected_index)
 
+func on_arrow_slot_clicked(idx: int):
+	selected_index = idx
+	inventory_ui.set_selected_arrow_slot(selected_index)
+	spell_activated.emit(selected_index)
+	
 func check_magic_ui_visibility():
 	var should_show_magic_ui = (combat_system.left_weapon != null and \
 	combat_system.left_weapon.attack_type == "Magic") or \
 	(combat_system.right_weapon != null and \
 	combat_system.right_weapon.attack_type == "Magic")
-	inventory_ui.toggle_spells_ui(should_show_magic_ui)
+	inventory_ui.toggle_spell_ui(should_show_magic_ui)
+	if should_show_magic_ui == false:
+		on_screen_ui.toggle_spell_slot(false, null)
+	var should_show_ranged_ui = (combat_system.left_weapon != null and \
+	combat_system.left_weapon.attack_type == "Ranged") or \
+	(combat_system.right_weapon != null and \
+	combat_system.right_weapon.attack_type == "Ranged")
+	inventory_ui.toggle_arrow_ui(should_show_ranged_ui)
 	if should_show_magic_ui == false:
 		on_screen_ui.toggle_spell_slot(false, null)
 	

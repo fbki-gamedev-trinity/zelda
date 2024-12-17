@@ -5,6 +5,7 @@ class_name OnScreenUI
 @onready var right_hand_slot: OnScreenEquipmentSlot = %RightHandSlot
 @onready var left_hand_slot: OnScreenEquipmentSlot = %LeftHandSlot
 @onready var spell_slot: OnScreenEquipmentSlot = %SpellSlot
+@onready var arrow_slot: OnScreenEquipmentSlot = %ArrowSlot
 
 @onready var progress_bar: ProgressBar = $MarginContainer/ProgressBar
 
@@ -28,5 +29,10 @@ func toggle_spell_slot(is_visible: bool, ui_texture: Texture):
 	if is_visible:
 		spell_slot.set_equipment_texture(ui_texture)
 
+func toggle_arrow_slot(is_visible: bool, ui_texture: Texture):
+	arrow_slot.visible = is_visible
+	if is_visible:
+		arrow_slot.set_equipment_texture(ui_texture)
+		
 func spell_cooldown_activated(cooldown: float):
 	spell_slot.on_cooldown(cooldown)

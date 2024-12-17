@@ -8,12 +8,31 @@ var spell_configs: Array[SpellConfig] = [
 	preload("res://resources/rocks_spell_config.tres")
 ]
 
+var arrow_configs: Array[SpellConfig] = [
+	preload("res://resources/fire_arrow_config.tres"),
+	preload("res://resources/water_arrow_config.tres"),
+	preload("res://resources/air_arrow_config.tres")
+]
+
+
+const SPELL_SCENE = preload("res://scenes/spell.tscn")
+const ARROW_SCENE = preload("res://scenes/arrow.tscn")
+
+
+var configs = {
+	"ranged": arrow_configs,
+	"magic": spell_configs
+}
+
+var scenes = {
+	"ranged": ARROW_SCENE,
+	"magic": SPELL_SCENE
+}
+
 @onready var animated_sprite_2d: AnimationController = %AnimatedSprite2D
 @onready var inventory: Inventory = $"../inventory"
 @onready var on_screen_ui: OnScreenUI = $"../onScreenUI"
 @onready var combat_system: CombatSystem = $"../CombatSystem"
-
-const SPELL_SCENE = preload("res://scenes/spell.tscn")
 
 var current_spell_cooldown = -1
 var cooldown_timer = 1000
@@ -29,7 +48,7 @@ func _process(delta: float) -> void:
 		
 func on_cast_active_spell():
 	var spell_direction = animated_sprite_2d.attack_vector
-	var spell_config = spell_configs[active_spell_index]
+	var spell_config = configs[combat_system.left_weapon.attack_type.to_lower()][active_spell_index]
 	
 	if cooldown_timer != 0 and cooldown_timer < current_spell_cooldown:
 		return
@@ -38,7 +57,7 @@ func on_cast_active_spell():
 		
 	on_screen_ui.spell_cooldown_activated(current_spell_cooldown)
 	var spell_rotation = get_spell_rotation(spell_direction, spell_config.initial_rotation)
-	var spell: Spell = SPELL_SCENE.instantiate()
+	var spell: Spell = scenes[combat_system.left_weapon.attack_type.to_lower()].instantiate()
 	get_tree().root.add_child(spell)
 	spell.rotation_degrees = spell_rotation
 	spell.direction = spell_direction
@@ -59,7 +78,7 @@ func get_spell_rotation(spell_direction: Vector2, initial_rotation: int):
 		
 func on_spell_activated(idx: int):
 	active_spell_index = idx
-	var spell_config = spell_configs[idx]
+	var spell_config = configs[combat_system.left_weapon.attack_type.to_lower()][idx]
 	on_screen_ui.toggle_spell_slot(true, spell_config.ui_texture)
 	print(spell_config.initial_cooldown)
 	current_spell_cooldown = spell_config.initial_cooldown #вот тут ломается

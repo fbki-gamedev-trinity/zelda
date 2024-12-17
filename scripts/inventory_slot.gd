@@ -20,6 +20,7 @@ var is_selected = false
 @onready var price_label: Label = $priceLabel
 @onready var menu_button: MenuButton = $NinePatchRect/MenuButton
 
+var attack_type
 var slot_to_equip = "NotEquipable"
 
 func _ready() -> void:
@@ -62,6 +63,7 @@ func add_item(item: InventoryItem):
 	if item.stacks < 2:
 		return
 	stacks_label.text = str(item.stacks)
+	attack_type = item.weapon_item.attack_type
 
 func _on_on_click_button_pressed() -> void:
 	slot_clicked.emit()

@@ -124,7 +124,7 @@ item_to_drop = ExtResource("5_jcecq")
 position = Vector2(48, -4)
 
 [node name="pickUpItem7" parent="." instance=ExtResource("3_v8iom")]
-position = Vector2(155, 221)
+position = Vector2(7, 85)
 inventry_item = ExtResource("12_2gs7h")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
