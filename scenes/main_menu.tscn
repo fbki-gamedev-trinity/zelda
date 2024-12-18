@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvr3vtknlkvqm"]
+[gd_scene load_steps=15 format=3 uid="uid://dvr3vtknlkvqm"]
 
 [ext_resource type="FontFile" uid="uid://bq2phat0leerj" path="res://assets/carmen.ttf" id="1_auhih"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j54mm"]
@@ -26,7 +26,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.410552, 0.683708, 0.394483, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgqer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ordmm"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
 border_width_top = 4
@@ -50,6 +50,14 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.410552, 0.683708, 0.394483, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy64l"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.410552, 0.683708, 0.394483, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8hyk"]
 bg_color = Color(0.699316, 0.854903, 0.694253, 1)
 border_width_left = 4
@@ -60,6 +68,14 @@ border_color = Color(0.410552, 0.683708, 0.394483, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mac28"]
 bg_color = Color(0.557108, 0.739861, 0.554132, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.410552, 0.683708, 0.394483, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xleew"]
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -138,7 +154,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_en7rm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_js7wy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1tjuv")
-theme_override_styles/normal = SubResource("StyleBoxFlat_lgqer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ordmm")
 text = "Начать игру
 "
 
@@ -154,7 +170,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_en7rm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bbptj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3wdpt")
-theme_override_styles/normal = SubResource("StyleBoxFlat_lgqer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jy64l")
 text = "Настройки"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
@@ -169,7 +185,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_en7rm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f8hyk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mac28")
-theme_override_styles/normal = SubResource("StyleBoxFlat_lgqer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xleew")
 text = "Выход"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
