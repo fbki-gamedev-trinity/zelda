@@ -83,8 +83,9 @@ patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrol
 item_to_drop = ExtResource("7_iyeid")
 
 [node name="Enemy_wood" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("9_g7e78")]
-position = Vector2(173, 114)
+position = Vector2(221, 140)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
+item_to_drop = ExtResource("12_2gs7h")
 
 [node name="EnemyPatrolPath" type="Node2D" parent="."]
 position = Vector2(-10, 8)
@@ -115,14 +116,17 @@ position = Vector2(-7, 8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(59, 66)
+health = 50
 item_to_drop = ExtResource("7_iyeid")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(-73, -42)
+health = 50
 item_to_drop = ExtResource("7_iyeid")
 
 [node name="CharacterBody2D3" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(248, 112)
+health = 50
 item_to_drop = ExtResource("5_jcecq")
 
 [node name="pickUpItem6" parent="." instance=ExtResource("3_v8iom")]

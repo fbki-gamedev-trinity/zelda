@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://cu01ep6olj4s8"]
+[gd_scene load_steps=47 format=3 uid="uid://cu01ep6olj4s8"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vey4g"]
-[ext_resource type="Resource" uid="uid://crnxv0ydg11jr" path="res://resources/bow_inventory_item.tres" id="2_f4p8x"]
+[ext_resource type="Script" path="res://scenes/enemy_with_sleep.gd" id="1_3dmlh"]
 [ext_resource type="Texture2D" uid="uid://b88ty654ajykx" path="res://assets/objects.png" id="3_0ffbp"]
 [ext_resource type="Texture2D" uid="uid://4yjo6dtko3i5" path="res://assets/log.png" id="4_qbwoh"]
 [ext_resource type="Script" path="res://scripts/enemy_animated_sprite_2d.gd" id="5_icpf6"]
@@ -123,6 +122,34 @@ region = Rect2(64, 64, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3dho"]
 atlas = ExtResource("4_qbwoh")
 region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk3bm"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx7hn"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4gba"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbqim"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1gl6"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekucm"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiig7"]
+atlas = ExtResource("4_qbwoh")
+region = Rect2(160, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p5t3q"]
 animations = [{
@@ -254,18 +281,47 @@ animations = [{
 "loop": true,
 "name": &"right_walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk3bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx7hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4gba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbqim")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1gl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekucm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiig7")
+}],
+"loop": false,
+"name": &"wake_up",
+"speed": 5.0
 }]
 
 [node name="Enemy_wood" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 22
-script = ExtResource("1_vey4g")
-speed = 50.0
-item_to_drop = ExtResource("2_f4p8x")
+script = ExtResource("1_3dmlh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p5t3q")
-animation = &"right_walk"
+animation = &"wake_up"
 script = ExtResource("5_icpf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

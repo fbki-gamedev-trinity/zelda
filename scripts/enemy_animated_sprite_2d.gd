@@ -29,7 +29,6 @@ func play_movement_animation(direction: Vector2):
 	elif direction.y < 0 and absf(direction.y) > absf(direction.x):
 		play("back_walk")
 		return
-		
 
 func play_idle_animation():
 	if MOVEMENT_TO_IDLE.keys().has(animation):

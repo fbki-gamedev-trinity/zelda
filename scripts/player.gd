@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play_movement_animation(velocity)
 	else:
 		animated_sprite_2d.play_idle_animation()
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_position())
+	#var collision = move_and_collide(velocity * delta)
+	#if collision:
+		#velocity = velocity.bounce(collision.get_position())
 	move_and_slide()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
