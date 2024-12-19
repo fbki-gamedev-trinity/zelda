@@ -28,8 +28,8 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
 
 	# Запрещаем движение по диагонали
-	if direction.x != 0 and direction.y != 0:
-		direction.y = 0  # Отдаем приоритет горизонтальному движению
+	#if direction.x != 0 and direction.y != 0:
+		#direction.y = 0  # Отдаем приоритет горизонтальному движению
 
 	if direction:
 		velocity = direction * SPEED * delta
