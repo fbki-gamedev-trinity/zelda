@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu01ep6olj4s8"]
+[gd_scene load_steps=41 format=3 uid="uid://cu01ep6olj4s8"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vey4g"]
+[ext_resource type="Resource" uid="uid://crnxv0ydg11jr" path="res://resources/bow_inventory_item.tres" id="2_f4p8x"]
 [ext_resource type="Texture2D" uid="uid://b88ty654ajykx" path="res://assets/objects.png" id="3_0ffbp"]
 [ext_resource type="Texture2D" uid="uid://4yjo6dtko3i5" path="res://assets/log.png" id="4_qbwoh"]
 [ext_resource type="Script" path="res://scripts/enemy_animated_sprite_2d.gd" id="5_icpf6"]
@@ -260,6 +261,7 @@ collision_layer = 32
 collision_mask = 22
 script = ExtResource("1_vey4g")
 speed = 50.0
+item_to_drop = ExtResource("2_f4p8x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p5t3q")
