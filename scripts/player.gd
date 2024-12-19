@@ -64,4 +64,5 @@ func on_player_dead():
 	collision_shape_2d.set_deferred("disabled", true) 
 	area_collision_shape_2d.set_deferred("disabled", true) 
 	animated_sprite_2d.play_dead_animation()
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	

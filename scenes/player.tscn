@@ -353,7 +353,7 @@ script = ExtResource("1_668uq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4r6ov")
-animation = &"back_dead"
+animation = &"front_dead"
 autoplay = "front_idle"
 script = ExtResource("3_w34ad")
 
