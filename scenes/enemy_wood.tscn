@@ -256,6 +256,8 @@ animations = [{
 }]
 
 [node name="Enemy_wood" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 22
 script = ExtResource("1_vey4g")
 speed = 50.0
 
@@ -265,14 +267,12 @@ animation = &"right_walk"
 script = ExtResource("5_icpf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2)
 shape = ExtResource("6_jj01s")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -2)
 shape = ExtResource("6_jj01s")
 
 [node name="HealthSystem" type="Node" parent="."]
@@ -284,3 +284,5 @@ theme_override_styles/background = ExtResource("9_aa6c4")
 theme_override_styles/fill = ExtResource("10_8cag2")
 script = ExtResource("11_wk7mv")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

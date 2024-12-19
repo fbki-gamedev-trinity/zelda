@@ -129,6 +129,7 @@ item_to_drop = ExtResource("5_jcecq")
 position = Vector2(48, -4)
 
 [node name="pickUpItem7" parent="." instance=ExtResource("3_v8iom")]
+visible = false
 position = Vector2(155, 221)
 inventry_item = ExtResource("12_2gs7h")
 
