@@ -86,17 +86,13 @@ id = "main_item_6"
 visible = false
 position = Vector2(173, 116)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
-
 id = "main_enemy_1"
-
 item_to_drop = ExtResource("7_iyeid")
 
 [node name="Enemy_wood" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("9_g7e78")]
 position = Vector2(221, 140)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
-
 id = "main_enemy_2"
-
 item_to_drop = ExtResource("12_2gs7h")
 
 [node name="EnemyPatrolPath" type="Node2D" parent="."]
