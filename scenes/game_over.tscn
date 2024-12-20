@@ -1,6 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1pjfuiut38pe"]
+[gd_scene load_steps=17 format=3 uid="uid://d1pjfuiut38pe"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_7jvgj"]
+[ext_resource type="Texture2D" uid="uid://4tko1fxjvbh3" path="res://assets/bg3.jpg" id="2_hgxw4"]
+[ext_resource type="FontFile" uid="uid://bq2phat0leerj" path="res://assets/carmen.ttf" id="3_hqxq4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fiska"]
+texture = ExtResource("2_hgxw4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ran52"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2rlq"]
+bg_color = Color(0.698039, 0.854902, 0.694118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tng16"]
+bg_color = Color(0.556863, 0.741176, 0.552941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wad13"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vauhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gkrn"]
+bg_color = Color(0.698039, 0.854902, 0.694118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liagh"]
+bg_color = Color(0.556863, 0.741176, 0.552941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04nhl"]
+bg_color = Color(1, 1, 1, 0.996078)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ck1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sdr4"]
+bg_color = Color(0.698039, 0.854902, 0.694118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mel5t"]
+bg_color = Color(0.556863, 0.741176, 0.552941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a18m4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.411765, 0.682353, 0.396078, 1)
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_7jvgj")
@@ -11,21 +94,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fiska")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 529.0
-offset_top = 104.0
-offset_right = -536.0
-offset_bottom = -521.0
+offset_left = 392.0
+offset_top = 58.5
+offset_right = -399.0
+offset_bottom = -475.5
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_hqxq4")
+theme_override_font_sizes/font_size = 100
 text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 395.5
@@ -40,16 +130,46 @@ theme_override_constants/separation = 32
 [node name="Retry" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.168627, 0, 1)
+theme_override_fonts/font = ExtResource("3_hqxq4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ran52")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r2rlq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tng16")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wad13")
 text = "Повторить"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.168627, 0, 1)
+theme_override_fonts/font = ExtResource("3_hqxq4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vauhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1gkrn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_liagh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_04nhl")
 text = "Главное меню"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/font_color = Color(0, 0.168627, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.168627, 0, 1)
+theme_override_fonts/font = ExtResource("3_hqxq4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ck1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4sdr4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mel5t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a18m4")
 text = "Выход"
 
 [connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
