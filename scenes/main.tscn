@@ -91,7 +91,7 @@ item_to_drop = ExtResource("12_2gs7h")
 position = Vector2(-10, 8)
 
 [node name="Marker2D" type="Marker2D" parent="EnemyPatrolPath"]
-position = Vector2(192, 86)
+position = Vector2(195, 88)
 
 [node name="Marker2D2" type="Marker2D" parent="EnemyPatrolPath"]
 position = Vector2(233, 105)
@@ -137,8 +137,7 @@ position = Vector2(48, -4)
 id = "main_item_7"
 
 [node name="pickUpItem7" parent="." instance=ExtResource("3_v8iom")]
-visible = false
-position = Vector2(155, 221)
+position = Vector2(-2, 265)
 inventry_item = ExtResource("12_2gs7h")
 id = "main_item_8"
 

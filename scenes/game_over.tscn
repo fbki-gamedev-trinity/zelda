@@ -128,6 +128,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
 [node name="Retry" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
@@ -143,6 +144,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wad13")
 text = "Повторить"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
@@ -158,6 +160,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_04nhl")
 text = "Главное меню"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0.168627, 0, 1)
