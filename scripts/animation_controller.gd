@@ -48,7 +48,7 @@ func play_movement_animation(velocity: Vector2):
 		item_eject_direction = Vector2.LEFT
 		play("left_walk")
 	
-	if velocity.y > 0:
+	elif velocity.y > 0:
 		item_eject_direction = Vector2.DOWN
 		play("front_walk")
 	elif velocity.y < 0:

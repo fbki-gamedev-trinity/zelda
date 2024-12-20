@@ -347,13 +347,13 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 102
+collision_mask = 198
 script = ExtResource("1_668uq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4r6ov")
-animation = &"back_dead"
+animation = &"front_dead"
 autoplay = "front_idle"
 script = ExtResource("3_w34ad")
 
@@ -361,7 +361,7 @@ script = ExtResource("3_w34ad")
 shape = ExtResource("3_rcfhj")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 40
+collision_mask = 168
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = ExtResource("3_rcfhj")
@@ -381,7 +381,7 @@ script = ExtResource("7_y2q4d")
 
 [node name="Area2D" type="Area2D" parent="CombatSystem/RightHandWeaponSprite"]
 collision_layer = 16
-collision_mask = 32
+collision_mask = 160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
 disabled = true
@@ -390,7 +390,7 @@ disabled = true
 
 [node name="Area2D" type="Area2D" parent="CombatSystem/LeftHandWeaponSprite2"]
 collision_layer = 16
-collision_mask = 32
+collision_mask = 160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite2/Area2D"]
 disabled = true

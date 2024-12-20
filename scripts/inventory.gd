@@ -39,6 +39,12 @@ func add_item(item: InventoryItem, stacks: int):
 		inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
 		
+func get_items():
+	return items
+	
+func remove_items():
+	items.clear()
+		
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 	var item_index = -1
 	for i in items.size():

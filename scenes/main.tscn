@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dqn10ipvsaxtg"]
+[gd_scene load_steps=15 format=4 uid="uid://dqn10ipvsaxtg"]
 
 [ext_resource type="TileSet" uid="uid://c812qkm8bhei5" path="res://layers.tres" id="1_57ra1"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l1l45"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgvhcwyy1f2d" path="res://scenes/enemy.tscn" id="6_kkiyh"]
 [ext_resource type="Resource" uid="uid://c6edpnmtxdtim" path="res://resources/gold_coin.tres" id="7_iyeid"]
 [ext_resource type="Script" path="res://scripts/house_entrance.gd" id="8_8k0f2"]
+[ext_resource type="PackedScene" uid="uid://cu01ep6olj4s8" path="res://scenes/enemy_wood.tscn" id="9_g7e78"]
 [ext_resource type="PackedScene" uid="uid://btgc4fwremsfe" path="res://scenes/destroyed_object.tscn" id="11_v7kmj"]
 [ext_resource type="Resource" uid="uid://crnxv0ydg11jr" path="res://resources/bow_inventory_item.tres" id="12_2gs7h"]
 
@@ -50,36 +51,49 @@ tilemap = NodePath("../../tileLayers/groundTileLayer")
 position = Vector2(191, 216)
 inventry_item = ExtResource("7_iyeid")
 stacks = 25
+id = "main_item_1"
 
 [node name="pickUpItemSword" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(-50, 4)
 inventry_item = ExtResource("4_2j83i")
+id = "main_item_2"
 
 [node name="pickUpItem2" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(184, 217)
 inventry_item = ExtResource("7_iyeid")
 stacks = 25
+id = "main_item_3"
 
 [node name="pickUpItem3" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(176, 218)
 inventry_item = ExtResource("7_iyeid")
 stacks = 25
+id = "main_item_4"
 
 [node name="pickUpItem4" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(180, 211)
 inventry_item = ExtResource("7_iyeid")
 stacks = 25
+id = "main_item_5"
 
 [node name="pickUpItem5" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(170, 212)
 inventry_item = ExtResource("7_iyeid")
 stacks = 25
+id = "main_item_6"
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_kkiyh")]
+visible = false
 position = Vector2(173, 116)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
-patrol_wait_time = 0.1
+id = "main_enemy_1"
 item_to_drop = ExtResource("7_iyeid")
+
+[node name="Enemy_wood" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("9_g7e78")]
+position = Vector2(221, 140)
+patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
+id = "main_enemy_2"
+item_to_drop = ExtResource("12_2gs7h")
 
 [node name="EnemyPatrolPath" type="Node2D" parent="."]
 position = Vector2(-10, 8)
@@ -110,21 +124,30 @@ position = Vector2(-7, 8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(59, 66)
+health = 50
 item_to_drop = ExtResource("7_iyeid")
+id = "main_obj_1"
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(-73, -42)
+health = 50
 item_to_drop = ExtResource("7_iyeid")
+id = "main_obj_2"
 
 [node name="CharacterBody2D3" parent="." instance=ExtResource("11_v7kmj")]
 position = Vector2(248, 112)
+health = 50
 item_to_drop = ExtResource("5_jcecq")
+id = "main_obj_3"
 
 [node name="pickUpItem6" parent="." instance=ExtResource("3_v8iom")]
 position = Vector2(48, -4)
+id = "main_item_7"
 
 [node name="pickUpItem7" parent="." instance=ExtResource("3_v8iom")]
+visible = false
 position = Vector2(155, 221)
 inventry_item = ExtResource("12_2gs7h")
+id = "main_item_8"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
