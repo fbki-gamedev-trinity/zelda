@@ -7,7 +7,6 @@ signal transition_done
 @export var transition_time := 0.2
 @onready var color_rect = $ColorRect
 var states: Dictionary = {}
-var health: int = 100
 var next_scene_path: String
 var is_transitioning: bool = false
 var player_spawn_position = null

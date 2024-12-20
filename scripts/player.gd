@@ -20,9 +20,6 @@ func _ready() -> void:
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_damage_taken)
 	on_screen_ui.init_health_bar(health)
-	health_system.current_health = TransitionChangeManager.health
-	print(health_system.current_health)
-	on_damage_taken(health - TransitionChangeManager.health)
 
 
 func sync_inventory_with_manager():
