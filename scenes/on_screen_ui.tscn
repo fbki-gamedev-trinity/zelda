@@ -70,6 +70,7 @@ slot_name = "Стрела"
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_mfdmb")]
 process_mode = 2
+anchors_preset = 15
 
 [node name="PauseButton" type="Button" parent="."]
 process_mode = 3
