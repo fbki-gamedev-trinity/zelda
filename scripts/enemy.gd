@@ -34,7 +34,8 @@ func _ready() -> void:
 	health_system.died.connect(on_died)
 	is_alive = TransitionChangeManager.load_state(self.id)
 	if not is_alive:
-		queue_free()  
+		queue_free()
+	 
 	
 
 func _physics_process(delta: float) -> void:

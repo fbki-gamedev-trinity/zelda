@@ -20,14 +20,26 @@ func _ready() -> void:
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_damage_taken)
 	on_screen_ui.init_health_bar(health)
-	#sync_inventory_with_manager()
-	#print(TransitionChangeManager.enemy_states)
+	health_system.current_health = TransitionChangeManager.health
+	print(health_system.current_health)
+	on_damage_taken(health - TransitionChangeManager.health)
+
 
 func sync_inventory_with_manager():
 	inventory.remove_items()
 	for item in PlayerInventoryManager.get_inventory():
 		inventory.add_item(item["item"], item["amount"])
 	print(inventory.get_items())
+	var equip = PlayerInventoryManager.equip
+	for key in equip.keys():
+		if key == "Spell":
+			inventory.on_spell_slot_clicked(equip.get(key))
+		elif key == "Arrow":
+			inventory.on_arrow_slot_clicked(equip.get(key))
+		else:
+			inventory.on_item_equipped(equip.get(key), key)
+	combat_system.left_hand_weapon_sprite.visible = false
+	combat_system.right_hand_weapon_sprite.visible = false
 
 func _physics_process(delta: float) -> void:
 	if animated_sprite_2d.animation.contains("attack"):

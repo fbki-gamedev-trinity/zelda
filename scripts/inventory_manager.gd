@@ -3,6 +3,7 @@ extends Node
 class_name InventoryManager
 
 var items: Array = []
+var equip: Dictionary = {}
 
 func add_item(item, amount: int) -> void:
 	for entry in items:
