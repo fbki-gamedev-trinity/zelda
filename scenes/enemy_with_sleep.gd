@@ -8,6 +8,8 @@ class_name Enemy_wood
 @export var damage_to_player = 10
 @export var detection_distance: float = 150 # Дистанция, на которой враг просыпается
 
+@export var id: String = ""
+
 @export var health: int = 50
 @export var item_to_drop: InventoryItem
 
@@ -25,6 +27,9 @@ var current_patrol_target = 0
 var wait_timer = 0.0
 var is_awake = false # Переменная для отслеживания состояния врага
 
+var is_alive: bool = true
+
+
 func _ready() -> void:
 	health_system.init(health)
 	progress_bar.max_value = health
@@ -32,6 +37,10 @@ func _ready() -> void:
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
 	health_system.died.connect(on_died)
+
+	is_alive = TransitionChangeManager.load_state(self.id)
+	if not is_alive:
+		queue_free()
 
 	# При загрузке сцены враг сразу спит
 	animated_sprite_2d.play("sleep")
@@ -71,6 +80,10 @@ func move_along_path(delta: float):
 			current_patrol_target = (current_patrol_target + 1) % patrol_path.size()
 
 func on_died():
+
+	is_alive = false
+	TransitionChangeManager.save_state(id, is_alive)
+
 	set_physics_process(false)
 	collision_shape_2d.set_deferred("disabled", true) 
 	area_collision_shape_2d.set_deferred("disabled", true) 

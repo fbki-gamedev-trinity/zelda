@@ -39,6 +39,12 @@ func add_item(item: InventoryItem, stacks: int):
 		inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
 		
+func get_items():
+	return items
+	
+func remove_items():
+	items.clear()
+		
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 	var item_index = -1
 	for i in items.size():
@@ -72,6 +78,7 @@ func on_item_equipped(idx: int, slot_to_equip: String):
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
 	combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)
 	check_magic_ui_visibility()
+	PlayerInventoryManager.equip[slot_to_equip] = idx
 	
 func on_item_dropped(idx: int):
 	clear_inventory_slot(idx)

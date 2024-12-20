@@ -6,8 +6,8 @@ signal transition_done
 
 @export var transition_time := 0.2
 @onready var color_rect = $ColorRect
-
-
+var states: Dictionary = {}
+var health: int = 100
 var next_scene_path: String
 var is_transitioning: bool = false
 var player_spawn_position = null
@@ -43,6 +43,11 @@ func on_fade_in_completed():
 func change_scene(next_scene_path: String):
 	if is_transitioning:
 		return
-		
 	self.next_scene_path = next_scene_path
 	fade_out()
+
+func save_state(id: String, is_alive: bool) -> void:
+	states[id] = is_alive
+
+func load_state(id: String) -> bool:
+	return states.get(id, true)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxf7biuhgyqdk"]
+[gd_scene load_steps=5 format=3 uid="uid://dxf7biuhgyqdk"]
 
 [ext_resource type="PackedScene" uid="uid://ipgctqlem4k3" path="res://scenes/on_screen_equipment_slot.tscn" id="1_8kll3"]
 [ext_resource type="Script" path="res://scripts/on_screen_ui.gd" id="1_ny8jv"]
 [ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="2_su2xi"]
 [ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="3_r66aa"]
-[ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="5_cwmy6"]
 
 [node name="onScreenUI" type="CanvasLayer"]
 script = ExtResource("1_ny8jv")
@@ -54,5 +53,4 @@ slot_name = "Заклинание"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme = ExtResource("5_cwmy6")
 slot_name = "Стрела"

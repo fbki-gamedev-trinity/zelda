@@ -6,7 +6,7 @@ class_name Enemy
 @export var patrol_path: Array[Marker2D] = []
 @export var patrol_wait_time = 0.2
 @export var damage_to_player = 10
-
+@export var id: String = ""
 @export var health: int = 50
 @export var item_to_drop: InventoryItem
 
@@ -18,6 +18,8 @@ class_name Enemy
 @export var loot_stacks = 1
 @onready var player = $"../Player"
 
+
+var is_alive: bool = true
 const PICKUP_ITEM_SCENE = preload("res://scenes/pickup_item.tscn") # для моентки с врага
 
 var current_patrol_target = 0
@@ -30,6 +32,11 @@ func _ready() -> void:
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
 	health_system.died.connect(on_died)
+	is_alive = TransitionChangeManager.load_state(self.id)
+	if not is_alive:
+		queue_free()
+	 
+	
 
 func _physics_process(delta: float) -> void:
 	if patrol_path.size() > 1:
@@ -60,6 +67,8 @@ func move_along_path(delta: float):
 
 
 func on_died():
+	is_alive = false
+	TransitionChangeManager.save_state(id, is_alive)
 	set_physics_process(false)
 	collision_shape_2d.set_deferred("disabled", true) 
 	area_collision_shape_2d.set_deferred("disabled", true) 

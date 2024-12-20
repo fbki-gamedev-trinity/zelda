@@ -10,6 +10,11 @@ func _ready() -> void:
 		if TransitionChangeManager.is_transitioning:
 			player.set_process_input(false)
 			player.set_physics_process(false)
+		player.sync_inventory_with_manager()
+		for child in self.get_children():
+			if child.get("id"):
+				if TransitionChangeManager.load_state(child.id) == false:
+					child.queue_free()
 
 func on_transition_done():
 	player.set_process_input(true)

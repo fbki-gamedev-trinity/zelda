@@ -10,6 +10,7 @@ func _ready() -> void:
 	TransitionChangeManager.transition_done.connect(on_transition_done)
 	var player = PLAYER_SCENE.instantiate() 
 	self.add_child(player)
+	player.sync_inventory_with_manager()
 
 	# Добавляем камеру к игроку
 	var camera = Camera2D.new()
@@ -40,6 +41,11 @@ func _ready() -> void:
 		player.set_process_input(false)
 	
 	player.position = player_spawn_place_marker.position
+	for child in self.get_children():
+		if child.get("id"):
+			if TransitionChangeManager.load_state(child.id) == false:
+				child.queue_free()
+
 
 func on_transition_done():
 	$Player.set_physics_process(true)
