@@ -9,7 +9,7 @@
 script = ExtResource("1_o0q8s")
 slot_type = "Left_Hand"
 ground_collision_shape = ExtResource("1_gyykk")
-name = "Книга заклинаний"
+name = "Книга"
 texture = ExtResource("2_5cs0o")
 max_stacks = 0
 price = 150

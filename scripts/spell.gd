@@ -25,3 +25,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Enemy:
 		(area.get_parent() as Enemy).apply_damage(damage)
 		queue_free()
+	if area.get_parent() is DestroyedObject:
+		(area.get_parent() as DestroyedObject).apply_damage(damage)
+		queue_free()

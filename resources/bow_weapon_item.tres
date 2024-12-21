@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://032qrv40iow8"]
+
+[ext_resource type="Shape2D" uid="uid://28qmbam1a4x" path="res://resources/bow_collision.tres" id="1_1r1j8"]
+[ext_resource type="Texture2D" uid="uid://cm18us3ul8w11" path="res://assets/bow.png" id="1_bxfxt"]
+[ext_resource type="Script" path="res://scripts/weapon_item.gd" id="2_spe57"]
+
+[resource]
+script = ExtResource("2_spe57")
+damage = 17
+in_hand_texture = ExtResource("1_bxfxt")
+collision_shape = ExtResource("1_1r1j8")
+attack_type = "Ranged"
+left_attachment_position = Vector2(-9, 4)
+right_attachment_position = Vector2(6, 4)
+front_attachment_position = Vector2(4, 11)
+back_attachment_position = Vector2(-7, -5)
+left_rotation = 180
+right_rotation = 0
+front_rotation = 0
+back_rotation = 0
+left_z_index = 1
+right_z_index = 1
+front_z_index = 1
+back_z_index = 0

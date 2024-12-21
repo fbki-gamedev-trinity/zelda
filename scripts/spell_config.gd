@@ -7,5 +7,5 @@ class_name SpellConfig
 @export var spell_name: String
 @export var initial_rotation = 0
 @export var ui_texture: Texture
-@export var initial_cooldown: float
+@export var initial_cooldown: int
 @export var damage: int = 10

@@ -4,7 +4,7 @@ class_name CombatSystem
 
 signal cast_active_spell
 
-@onready var animated_sprite_2d: AnimationController = %AnimatedSprite2D
+@onready var animated_sprite_2d: AnimationController = $"../AnimatedSprite2D"
 @onready var right_hand_weapon_sprite: Sprite2D = $RightHandWeaponSprite
 @onready var right_hand_collision_shape_2d: CollisionShape2D = $RightHandWeaponSprite/Area2D/CollisionShape2D
 @onready var left_hand_weapon_sprite: Sprite2D = $LeftHandWeaponSprite2
@@ -12,6 +12,7 @@ signal cast_active_spell
 
 @export var right_weapon: WeaponItem
 @export var left_weapon: WeaponItem
+
 var can_attack = true
 
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _input(event):
 	if Input.is_action_just_pressed("left_hand_action"):
 		perform_action(left_weapon, left_hand_weapon_sprite, left_hand_collision_shape_2d)
 		
-
+		
 func perform_action(weapon: WeaponItem, sprite: Sprite2D, collision_shape: CollisionShape2D):
 		if !can_attack:
 			return
@@ -53,23 +54,19 @@ func perform_action(weapon: WeaponItem, sprite: Sprite2D, collision_shape: Colli
 		
 		collision_shape.disabled = false
 		
-		if weapon.attack_type == "Magic":
+		if weapon.attack_type in ["Magic", "Ranged"]:
 			cast_active_spell.emit()
-
-
+		
 func set_active_weapon(weapon: WeaponItem, slot_to_equip: String):
-	
 	if slot_to_equip == "Left_Hand":
 		if weapon.collision_shape != null:
 			left_hand_collision_shape_2d.shape = weapon.collision_shape
-		
 		left_hand_weapon_sprite.texture = weapon.in_hand_texture
 		left_weapon = weapon
-	
+		
 	elif slot_to_equip == "Right_Hand":
 		if weapon.collision_shape != null:
 			right_hand_collision_shape_2d.shape = weapon.collision_shape
-		
 		right_hand_weapon_sprite.texture = weapon.in_hand_texture
 		right_weapon = weapon
 

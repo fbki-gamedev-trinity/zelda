@@ -2,7 +2,7 @@
 
 [ext_resource type="Shape2D" uid="uid://boumiqnq5b5u8" path="res://resources/fireball_collision.tres" id="1_wupqq"]
 [ext_resource type="Script" path="res://scripts/spell_config.gd" id="2_rux04"]
-[ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/Icons/tile000.png" id="3_tuuf3"]
+[ext_resource type="Texture2D" uid="uid://ob5ge70iveip" path="res://assets/fire_icon.png" id="3_tuuf3"]
 
 [resource]
 script = ExtResource("2_rux04")
