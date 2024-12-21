@@ -72,9 +72,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		TransitionChangeManager.save_state(area.id, area.is_alive)
 		area.queue_free()
 
-		
 	if area.get_parent() is Enemy:
 		var damage_to_player = (area.get_parent() as Enemy).damage_to_player
+		health_system.apply_damage(damage_to_player)
+	
+	if area.get_parent() is Enemy_wood:
+		var damage_to_player = (area.get_parent() as Enemy_wood).damage_to_player
 		health_system.apply_damage(damage_to_player)
 
 func on_damage_taken(damage: int) -> void:

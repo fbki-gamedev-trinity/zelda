@@ -13,9 +13,16 @@ var is_alive: bool = true
 func _ready() -> void:
 	sprite_2d.texture = inventry_item.texture
 	collision_shape_2d.shape = inventry_item.ground_collision_shape
-	is_alive = TransitionChangeManager.load_state(self.id)
+	is_alive = TransitionChangeManager.load_state(self.id + "_pickup")
 	if not is_alive:
 		queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		TransitionChangeManager.save_state(self.id + "_pickup", false)
+		body.add_item_to_inventory(inventry_item, stacks)
+		queue_free()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
