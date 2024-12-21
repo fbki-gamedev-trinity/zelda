@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dqn10ipvsaxtg"]
+[gd_scene load_steps=14 format=4 uid="uid://dqn10ipvsaxtg"]
 
 [ext_resource type="TileSet" uid="uid://c812qkm8bhei5" path="res://layers.tres" id="1_57ra1"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l1l45"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://mq02wr60xp4t" path="res://resources/sword_inventory_item.tres" id="4_2j83i"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="4_p7hbh"]
 [ext_resource type="Resource" uid="uid://bgf2k6i72nfqd" path="res://resources/axe_inventory_item.tres" id="5_jcecq"]
-[ext_resource type="PackedScene" uid="uid://bjgvhcwyy1f2d" path="res://scenes/enemy.tscn" id="6_kkiyh"]
 [ext_resource type="Resource" uid="uid://c6edpnmtxdtim" path="res://resources/gold_coin.tres" id="7_iyeid"]
 [ext_resource type="Script" path="res://scripts/house_entrance.gd" id="8_8k0f2"]
 [ext_resource type="PackedScene" uid="uid://cu01ep6olj4s8" path="res://scenes/enemy_wood.tscn" id="9_g7e78"]
@@ -82,13 +81,6 @@ inventry_item = ExtResource("7_iyeid")
 stacks = 25
 id = "main_item_6"
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_kkiyh")]
-visible = false
-position = Vector2(173, 116)
-patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
-id = "main_enemy_1"
-item_to_drop = ExtResource("7_iyeid")
-
 [node name="Enemy_wood" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("9_g7e78")]
 position = Vector2(221, 140)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D4")]
@@ -99,7 +91,7 @@ item_to_drop = ExtResource("12_2gs7h")
 position = Vector2(-10, 8)
 
 [node name="Marker2D" type="Marker2D" parent="EnemyPatrolPath"]
-position = Vector2(192, 86)
+position = Vector2(195, 88)
 
 [node name="Marker2D2" type="Marker2D" parent="EnemyPatrolPath"]
 position = Vector2(233, 105)
@@ -145,8 +137,7 @@ position = Vector2(48, -4)
 id = "main_item_7"
 
 [node name="pickUpItem7" parent="." instance=ExtResource("3_v8iom")]
-visible = false
-position = Vector2(155, 221)
+position = Vector2(-2, 265)
 inventry_item = ExtResource("12_2gs7h")
 id = "main_item_8"
 

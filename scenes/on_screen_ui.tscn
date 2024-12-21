@@ -1,13 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxf7biuhgyqdk"]
+[gd_scene load_steps=10 format=3 uid="uid://dxf7biuhgyqdk"]
 
 [ext_resource type="PackedScene" uid="uid://ipgctqlem4k3" path="res://scenes/on_screen_equipment_slot.tscn" id="1_8kll3"]
 [ext_resource type="Script" path="res://scripts/on_screen_ui.gd" id="1_ny8jv"]
+[ext_resource type="Script" path="res://scripts/pause_manager.gd" id="2_fdiu7"]
 [ext_resource type="StyleBox" uid="uid://dyepy0k1or3h6" path="res://resources/health_bar_background.tres" id="2_su2xi"]
 [ext_resource type="StyleBox" uid="uid://cla7nw11jtilb" path="res://resources/health_bar_fill.tres" id="3_r66aa"]
 [ext_resource type="Theme" uid="uid://upnac3aa235p" path="res://resources/inventory_ui.tres" id="5_cwmy6"]
+[ext_resource type="PackedScene" uid="uid://ccvnmw84ytq4k" path="res://scenes/pause_menu.tscn" id="6_mfdmb"]
+[ext_resource type="FontFile" uid="uid://bq2phat0leerj" path="res://assets/carmen.ttf" id="8_gmhiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3phc"]
+bg_color = Color(0, 0.168627, 0, 0.352941)
+border_color = Color(1, 1, 1, 1)
 
 [node name="onScreenUI" type="CanvasLayer"]
 script = ExtResource("1_ny8jv")
+
+[node name="PauseManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_fdiu7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -56,3 +67,28 @@ visible = false
 layout_mode = 2
 theme = ExtResource("5_cwmy6")
 slot_name = "Стрела"
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_mfdmb")]
+process_mode = 2
+anchors_preset = 15
+
+[node name="PauseButton" type="Button" parent="."]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -163.0
+offset_top = 17.0
+offset_right = -14.0
+offset_bottom = 87.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_gmhiy")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_h3phc")
+text = "Пауза"
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer2/VBoxContainer/Return" to="PauseManager" method="_on_return_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer2/VBoxContainer/MainMenu" to="PauseManager" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseButton" to="PauseManager" method="_on_pause_button_pressed"]
+
+[editable path="PauseMenu"]

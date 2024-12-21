@@ -44,9 +44,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		var loot_drop = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
 		loot_drop.inventry_item = item_to_drop
 		loot_drop.stacks = stacks
-		
-		get_tree().root.add_child(loot_drop)
+		print("Pick up ", loot_drop)
+		print("Item from obj ", item_to_drop)
 		loot_drop.global_position = position
+		get_tree().root.add_child(loot_drop)
 		queue_free()
 		
 
