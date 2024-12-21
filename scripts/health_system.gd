@@ -15,7 +15,7 @@ func init(health: int):
 func apply_damage(damage: int):
 	current_health = current_health - damage
 	#print("current_health", current_health)
-	TransitionChangeManager.health = current_health
+	#TransitionChangeManager.health = current_health
 	damage_taken.emit(damage)
 	if current_health <= 0:
 		died.emit()

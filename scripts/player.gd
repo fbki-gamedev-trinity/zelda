@@ -20,9 +20,6 @@ func _ready() -> void:
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_damage_taken)
 	on_screen_ui.init_health_bar(health)
-	health_system.current_health = TransitionChangeManager.health
-	print(health_system.current_health)
-	on_damage_taken(health - TransitionChangeManager.health)
 
 
 func sync_inventory_with_manager():
@@ -75,9 +72,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		TransitionChangeManager.save_state(area.id, area.is_alive)
 		area.queue_free()
 
-		
 	if area.get_parent() is Enemy:
 		var damage_to_player = (area.get_parent() as Enemy).damage_to_player
+		health_system.apply_damage(damage_to_player)
+	
+	if area.get_parent() is Enemy_wood:
+		var damage_to_player = (area.get_parent() as Enemy_wood).damage_to_player
 		health_system.apply_damage(damage_to_player)
 
 func on_damage_taken(damage: int) -> void:

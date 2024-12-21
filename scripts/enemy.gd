@@ -34,8 +34,7 @@ func _ready() -> void:
 	health_system.died.connect(on_died)
 	is_alive = TransitionChangeManager.load_state(self.id)
 	if not is_alive:
-		queue_free()
-	 
+		queue_free()  
 	
 
 func _physics_process(delta: float) -> void:
@@ -68,21 +67,22 @@ func move_along_path(delta: float):
 
 func on_died():
 	is_alive = false
-	TransitionChangeManager.save_state(id, is_alive)
+	TransitionChangeManager.save_state(id + "_enemy", is_alive)
 	set_physics_process(false)
 	collision_shape_2d.set_deferred("disabled", true) 
 	area_collision_shape_2d.set_deferred("disabled", true) 
 	
 	animated_sprite_2d.play("died")
-	
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "died":
 		var loot_drop = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
 		loot_drop.inventry_item = item_to_drop
 		loot_drop.stacks = loot_stacks
+		loot_drop.id = id + "_pickup"
+		print("Pick up ", loot_drop)
+		print("Item from enemy ", item_to_drop)
 		
-		get_tree().root.add_child(loot_drop)
 		loot_drop.global_position = position
+		get_tree().root.add_child(loot_drop)
 		queue_free()

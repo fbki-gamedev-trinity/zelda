@@ -22,7 +22,6 @@ const INVENTORY_SLOT_SCENE = preload("res://scenes/inventory_slot.tscn")
 @onready var arrows_ui: VBoxContainer = %ArrowsUI
 @export var size = 8
 @export var columns = 4
-
 func _ready() -> void:
 	grid_container.columns = columns
 	for i in size:
@@ -58,7 +57,6 @@ func clear_slot_at_index(idx: int):
 	
 	empty_inventory_slot.drop_item.connect(func(): drop_item_on_the_ground.emit(idx))
 	empty_inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(idx, slot_to_equip))
-	
 	
 	var child_to_remove = grid_container.get_child(idx)
 	grid_container.remove_child(child_to_remove)
