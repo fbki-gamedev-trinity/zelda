@@ -130,7 +130,7 @@ animations = [{
 [node name="Bow" type="Area2D"]
 visibility_layer = 32
 collision_layer = 16
-collision_mask = 32
+collision_mask = 160
 script = ExtResource("1_evegm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
