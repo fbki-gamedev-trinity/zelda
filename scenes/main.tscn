@@ -115,7 +115,7 @@ shape = SubResource("RectangleShape2D_rvo0f")
 position = Vector2(-7, 8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("11_v7kmj")]
-position = Vector2(59, 66)
+position = Vector2(46, 65)
 health = 50
 item_to_drop = ExtResource("7_iyeid")
 id = "main_obj_1"
